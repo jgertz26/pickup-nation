@@ -8,4 +8,16 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :court do
+    sequence(:name) {|n| "Dinkle Park Courts#{n}" }
+    sequence(:street_address) {|n| "#{n} Dinkleberry Drive" }
+    city 'Boston'
+    state 'MA'
+    zip '02215'
+    setting "Outdoor with lights"
+    hoop_count 4
+    latitude 40.11245
+    longitude -0.012345
+  end
+
 end

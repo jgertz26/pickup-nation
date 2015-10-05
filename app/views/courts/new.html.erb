@@ -1,0 +1,35 @@
+<h1>Submit New Court</h1>
+
+<%= form_for @court do |f| %>
+
+  <%= f.label :name, "Name of court"%>
+  <%= f.text_field :name %>
+
+  <%= f.label :street_address%>
+  <%= f.text_field :street_address %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+
+  <%= f.label :zip, "Zip Code" %>
+  <%= f.text_field :zip %>
+
+  <%= f.label :hoop_count, "Number of hoops" %>
+  <%= f.text_field :hoop_count %>
+
+  <%= f.label :setting %>
+  <%= f.select(:setting,
+  ['Outdoor without lights', 'Outdoor with lights', 'Indoor']) %>
+
+  <br>
+
+  <%= f.label :hours,
+  "Hours of Operation (if outdoor, include when lights go out)" %>
+  <%= f.text_field :hours, placeholder: "Optional" %>
+
+  <%= f.submit "Add Court" %>
+
+<% end %>
