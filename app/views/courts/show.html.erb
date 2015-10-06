@@ -1,10 +1,17 @@
+<p id="lat" hidden><%= @court.latitude %></p>
+<p id="lon" hidden><%= @court.longitude %></p>
+
 <h1><%= @court.name %></h1>
 
 <div class="show-info">
   Address: <%= @court.full_address %><br>
   Setting: <%= @court.setting %><br>
-  Hours: <%= @court.hours %>
+  Hours: <%= @court.hours %><br>
   Number of Hoops: <%= @court.hoop_count %><br>
+  <br>
+  <%= link_to "Edit Court", edit_court_path(@court) %>
 </div>
+<br>
+<div id="googleMap" style="width:400px;height:300px;"></div>
 
-<%= link_to "Edit Court", edit_court_path(@court) %>
+<%= javascript_include_tag 'show_marker' %>

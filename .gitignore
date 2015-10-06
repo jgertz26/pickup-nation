@@ -14,4 +14,3 @@
 /public/uploads
 /coverage
 .env
-.coveralls.yml
