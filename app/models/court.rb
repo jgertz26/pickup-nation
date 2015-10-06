@@ -20,6 +20,6 @@ class Court < ActiveRecord::Base
   validates :zip, length: { is: 5 }, numericality: { only_integer: true }
 
   def full_address
-    "#{street_address}, #{city}, #{state} #{zip}"
+    "#{street_address} #{city}, #{state} #{zip}"
   end
 end

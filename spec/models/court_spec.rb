@@ -31,7 +31,7 @@ describe Court, "#full_address" do
                                 state: "RI",
                                 zip: "02882")
 
-    expect(court.full_address).to eq("24 Park St., Rock City, RI 02882")
+    expect(court.full_address).to eq("24 Park St. Rock City, RI 02882")
   end
 
 end
