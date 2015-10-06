@@ -1,0 +1,7 @@
+<h1>Courts</h1>
+<ul>
+
+  <% @courts.each do |court| %>
+    <li><%= link_to court.name, court_path(court) %> - <%= court.full_address %></li>
+    <% end %>
+</ul>

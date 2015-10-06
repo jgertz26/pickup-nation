@@ -16,6 +16,10 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+group :test do
+
+end
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'byebug'
@@ -24,8 +28,7 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl'
   gem 'valid_attribute'
-  gem 'shoulda-matchers'
-  gem 'shoulda'
+  gem 'shoulda-matchers', '~> 2.8.0', require: false
 end
 
 group :development do

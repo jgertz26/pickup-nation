@@ -1,0 +1,10 @@
+<h1><%= @court.name %></h1>
+
+<div class="show-info">
+  Address: <%= @court.full_address %><br>
+  Setting: <%= @court.setting %><br>
+  Hours: <%= @court.hours %>
+  Number of Hoops: <%= @court.hoop_count %><br>
+</div>
+
+<%= link_to "Edit Court", edit_court_path(@court) %>
