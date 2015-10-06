@@ -17,7 +17,7 @@ gem 'foundation-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :test do
-
+  gem 'coveralls', require: false
 end
 
 group :development, :test do
