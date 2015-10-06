@@ -11,7 +11,7 @@ class Court < ActiveRecord::Base
                                       'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD',
                                       'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI',
                                       'WV', 'WY'],
-                                 message: "Invalid state" }
+                                 message: "is invalid" }
 
   validates :setting, inclusion: {
     in: ['Outdoor without lights', 'Outdoor with lights', 'Indoor']

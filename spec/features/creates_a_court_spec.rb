@@ -8,12 +8,14 @@ So I can schedule games there
 
   #Acceptance Criteria
   #[X] User can visit new court page from nav_bar page
-  #[ ] User fills in necessary information, submits, and is taken to the
-  #    show page
-  #[ ] User must be logged in
+  #[X] User fills in necessary information, submits, and is taken to the
+  #    show page, with a success message
+  #[X] User must be logged in
+  #[X] User sees errors if information is invalid
+
+  let(:user) { FactoryGirl.create(:user) }
 
   scenario "user submits correctly" do
-    user = FactoryGirl.create(:user)
     court = FactoryGirl.build(:court, hours: "TIME")
 
     visit root_path
@@ -50,8 +52,6 @@ So I can schedule games there
   end
 
   scenario "user submits blank form" do
-    user = FactoryGirl.create(:user)
-
     sign_in(user)
     visit new_court_path
 
@@ -66,7 +66,7 @@ So I can schedule games there
     expect(page).to have_content("Street address can't be blank")
     expect(page).to have_content("City can't be blank")
     expect(page).to have_content("State can't be blank")
-    expect(page).to have_content("State Invalid state")
+    expect(page).to have_content("State is invalid")
     expect(page).to have_content("Zip can't be blank")
     expect(page).to have_content("Zip is the wrong length (should be 5 characters)")
     expect(page).to have_content("Zip is not a number")

@@ -15,6 +15,7 @@ class CourtsController < ApplicationController
 
   def create
     @court = Court.new(court_params)
+
     if @court.save
       flash[:notice] = "Court added!"
       redirect_to court_path(@court)
@@ -22,6 +23,29 @@ class CourtsController < ApplicationController
       flash[:errors] = @court.errors.full_messages.join(" - ")
       render :new
     end
+  end
+
+  def edit
+    @court = Court.find(params["id"])
+  end
+
+  def update
+    @court = Court.find(params["id"])
+
+    if @court.update(court_params)
+      flash[:notice] = "Court updated!"
+      redirect_to court_path(@court)
+    else
+      flash[:errors] = @court.errors.full_messages.join(" - ")
+      render :edit
+    end
+  end
+
+  def destroy
+    @court = Court.find(params[:id])
+    @court.destroy
+    flash[:notice] = "Court deleted!"
+    redirect_to root_path
   end
 
   private

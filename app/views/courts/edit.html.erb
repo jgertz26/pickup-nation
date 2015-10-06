@@ -1,4 +1,4 @@
-<h1>Submit New Court</h1>
+<h1>Edit Court</h1>
 
 <%= form_for @court do |f| %>
 
@@ -28,6 +28,8 @@
   "Hours of Operation (if outdoor, include when lights go out)" %>
   <%= f.text_field :hours, placeholder: "Optional" %>
 
-  <%= f.submit "Add Court" %>
+  <%= f.submit "Update Court" %>
 
 <% end %>
+
+<%= link_to "Delete Court", court_path(@court), method: :delete  %>
