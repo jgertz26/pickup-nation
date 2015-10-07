@@ -3,7 +3,17 @@ class CourtsController < ApplicationController
   before_action :require_admin, only: :destroy
 
   def index
-    @courts = Court.all
+    if params["range"].nil?
+      user_location = get_user_location
+      @range = 10
+    else
+      user_location = Geocoder.search(params["location"])[0]
+      @range = params["range"]
+    end
+
+    @user_coordinates = [user_location.latitude, user_location.longitude]
+    @query_location = "#{user_location.city}, #{user_location.state_code}"
+    @courts = Court.near(@user_coordinates, @range)
   end
 
   def show
@@ -61,6 +71,14 @@ class CourtsController < ApplicationController
     unless current_user
       flash[:error] = "You need to log in to do that!"
       redirect_to root_path
+    end
+  end
+
+  def get_user_location
+    if Rails.env.development? || Rails.env.test?
+      Geocoder.search("33 Harrison Ave Boston MA 02111")[0]
+    else
+      Geocoder.search(request.remote_ip)[0]
     end
   end
 
