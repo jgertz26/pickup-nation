@@ -6,12 +6,12 @@ I want to submit a court
 So I can schedule games there
 ) do
 
-  #Acceptance Criteria
-  #[X] User can visit new court page from nav_bar page
-  #[X] User fills in necessary information, submits, and is taken to the
-  #    show page, with a success message
-  #[X] User must be logged in
-  #[X] User sees errors if information is invalid
+  # Acceptance Criteria
+  # [X] User can visit new court page from nav_bar page
+  # [X] User fills in necessary information, submits, and is taken to the
+  #     show page, with a success message
+  # [X] User must be logged in
+  # [X] User sees errors if information is invalid
 
   let(:user) { FactoryGirl.create(:user) }
 

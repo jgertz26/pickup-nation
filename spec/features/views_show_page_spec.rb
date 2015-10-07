@@ -6,9 +6,9 @@ I want to see details about a court
 So I can determine if it's worth my time.
 ) do
 
-  #Acceptance Criteria
-  #[ ] User can visit show page from index page by clicking the court name
-  #[ ] Info displayed includes address, hoop_count, paid?, hours
+  # Acceptance Criteria
+  # [X] User can visit show page from index page by clicking the court name
+  # [X] Info displayed includes address, hoop_count, paid?, hours
 
   scenario "user views all courts" do
     court_1 = FactoryGirl.create(:court, hours: "9AM-10:30PM")
