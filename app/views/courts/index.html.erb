@@ -1,7 +1,15 @@
-<h1>Courts</h1>
-<ul>
+<h1>Discover Courts</h1>
 
+<%= render "search" %>
+
+<ol class="courts-container">
   <% @courts.each do |court| %>
-    <li><%= link_to court.name, court_path(court) %> - <%= court.full_address %></li>
+    <div class="list-court">
+      <li>
+        <%= link_to court.name, court_path(court) %><br>
+        <%= court.full_address %><br>
+        <%= court.distance_from(@user_coordinates).round(1) %> miles away
+      </li>
+    </div>
     <% end %>
-</ul>
+</ol>

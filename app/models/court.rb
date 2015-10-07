@@ -1,4 +1,7 @@
 class Court < ActiveRecord::Base
+  geocoded_by :full_address
+  after_validation :geocode
+
   validates :name, :hoop_count, :street_address, :city, :state, :zip, :setting,
             presence: true
   validates :hoop_count, numericality: { only_integer: true, less_than: 30 }
@@ -20,6 +23,6 @@ class Court < ActiveRecord::Base
   validates :zip, length: { is: 5 }, numericality: { only_integer: true }
 
   def full_address
-    "#{street_address} #{city}, #{state} #{zip}"
+    "#{street_address} #{city} #{state} #{zip}"
   end
 end
