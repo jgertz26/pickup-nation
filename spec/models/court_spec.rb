@@ -25,11 +25,13 @@ end
 
 describe Court, "#full_address" do
   it "returns a formatted string of the complete address" do
-    court = FactoryGirl.create(:court,
-                                street_address: "33 Harrison Ave",
-                                city: "Boston",
-                                state: "MA",
-                                zip: "02111")
+    court = FactoryGirl.create(
+      :court,
+      street_address: "33 Harrison Ave",
+      city: "Boston",
+      state: "MA",
+      zip: "02111"
+    )
 
     expect(court.full_address).to eq("33 Harrison Ave Boston MA 02111")
   end
