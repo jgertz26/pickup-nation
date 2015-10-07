@@ -13,6 +13,7 @@ So I can determine if it's worth my time.
   scenario "user views all courts" do
     court_1 = FactoryGirl.create(:court, hours: "9AM-10:30PM")
 
+
     visit courts_path
     click_link court_1.name
 

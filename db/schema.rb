@@ -17,18 +17,18 @@ ActiveRecord::Schema.define(version: 20151004232320) do
   enable_extension "plpgsql"
 
   create_table "courts", force: :cascade do |t|
-    t.string   "name",                                                    null: false
-    t.decimal  "latitude",       precision: 11, scale: 8
-    t.decimal  "longitude",      precision: 11, scale: 8
-    t.string   "street_address",                                          null: false
-    t.string   "city",                                                    null: false
-    t.string   "state",                                                   null: false
-    t.string   "zip",                                                     null: false
-    t.string   "setting",                                                 null: false
+    t.string   "name",           null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "street_address", null: false
+    t.string   "city",           null: false
+    t.string   "state",          null: false
+    t.string   "zip",            null: false
+    t.string   "setting",        null: false
     t.string   "hours"
-    t.integer  "hoop_count",                                              null: false
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
+    t.integer  "hoop_count",     null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "courts", ["street_address", "city", "state", "zip"], name: "index_courts_on_street_address_and_city_and_state_and_zip", unique: true, using: :btree

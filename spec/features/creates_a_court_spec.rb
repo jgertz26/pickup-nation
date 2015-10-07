@@ -47,7 +47,7 @@ So I can schedule games there
     visit new_court_path
 
     expect(page).to have_content("You need to log in to do that!")
-    expect(page).to have_content("Courts")
+    expect(page).to have_content("Discover Courts")
 
   end
 

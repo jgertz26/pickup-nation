@@ -2,8 +2,8 @@ class CreateCourts < ActiveRecord::Migration
   def change
     create_table :courts do |t|
       t.string :name, null: false
-      t.decimal :latitude, precision: 11, scale: 8
-      t.decimal :longitude, precision: 11, scale: 8
+      t.float :latitude
+      t.float :longitude
       t.string :street_address, null: false
       t.string :city, null: false
       t.string :state, null: false

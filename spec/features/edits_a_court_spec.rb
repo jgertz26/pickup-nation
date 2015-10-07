@@ -37,7 +37,7 @@ Because somebody put some wrong information
     visit edit_court_path(court)
 
     expect(page).to have_content("You need to log in to do that!")
-    expect(page).to have_content("Courts")
+    expect(page).to have_content("Discover Courts")
 
   end
 
