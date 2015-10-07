@@ -1,26 +1,10 @@
 <h1>Discover Courts</h1>
 
-<div class="search-form">
-  <%= form_tag(courts_path, :method => "get") do %>
+<%= render "search" %>
 
-    <%= label_tag :range, "Show courts within" %>
-    <%= select_tag :range,
-        options_for_select([5, 10, 15, 20], @range) %>
-
-    <%= label_tag :location, "miles of" %>
-    <%= text_field_tag :location,
-        params[:location],
-        id: "location-box",
-        value: @query_location,
-        required: true %>
-
-        <button>Search</button>
-  <% end %>
-</div>
-
-<ol>
+<ol class="courts-container">
   <% @courts.each do |court| %>
-    <div class="index-court">
+    <div class="list-court">
       <li>
         <%= link_to court.name, court_path(court) %><br>
         <%= court.full_address %><br>
