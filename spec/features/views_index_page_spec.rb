@@ -6,9 +6,9 @@ I want to see a list of basketball courts
 So that I can find one near me that suits my needs.
 ) do
 
-  #Acceptance Criteria
-  #[X] User sees all courts
-  #[ ] Courts are listed based on proximity
+  # Acceptance Criteria
+  # [X] User sees all courts
+  # [ ] Courts are listed based on proximity
 
   scenario "user views all courts" do
     court_1 = FactoryGirl.create(:court)

@@ -1,5 +1,6 @@
 class CourtsController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_admin, only: :destroy
 
   def index
     if params["range"].nil?
@@ -78,6 +79,11 @@ class CourtsController < ApplicationController
       Geocoder.search("33 Harrison Ave Boston MA 02111")[0]
     else
       Geocoder.search(request.remote_ip)[0]
+
+  def require_admin
+    unless current_user.admin
+      flash[:error] = "You must be an admin to do that!"
+      redirect_to root_path
     end
   end
 end
