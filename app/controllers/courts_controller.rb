@@ -79,6 +79,8 @@ class CourtsController < ApplicationController
       Geocoder.search("33 Harrison Ave Boston MA 02111")[0]
     else
       Geocoder.search(request.remote_ip)[0]
+    end
+  end
 
   def require_admin
     unless current_user.admin
