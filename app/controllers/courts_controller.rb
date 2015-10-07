@@ -3,7 +3,7 @@ class CourtsController < ApplicationController
   before_action :require_admin, only: :destroy
 
   def index
-    if params["range"].nil?
+    if params["location"].nil?
       user_location = get_user_location
       @range = 10
     else
@@ -11,9 +11,12 @@ class CourtsController < ApplicationController
       @range = params["range"]
     end
 
+    @page = params["page"]
+    @page ||= 1
+    @start_num = @page.to_i * 5 - 4
     @user_coordinates = [user_location.latitude, user_location.longitude]
     @query_location = "#{user_location.city}, #{user_location.state_code}"
-    @courts = Court.near(@user_coordinates, @range)
+    @courts = Court.near(@user_coordinates, @range).page(@page)
   end
 
   def show
