@@ -8,7 +8,7 @@ Because someone built an apartment complex on it
 
   #Acceptance Criteria
   #[X] User can click delete link on edit page
-  #[ ] User must be logged in, and an admin
+  #[X] User must be logged in, and an admin
   #[X] User is taken to the homepage with success message
 
   let(:court) { FactoryGirl.create(:court) }
@@ -17,7 +17,6 @@ Because someone built an apartment complex on it
 
 
   scenario "user visits edit page" do
-
     sign_in(user)
     visit edit_court_path(court)
 
@@ -27,7 +26,6 @@ Because someone built an apartment complex on it
   end
 
   scenario "admin deletes successfully" do
-
     sign_in(admin)
     visit edit_court_path(court)
 
