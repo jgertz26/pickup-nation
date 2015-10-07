@@ -33,7 +33,7 @@ describe Court, "#full_address" do
       zip: "02111"
     )
 
-    expect(court.full_address).to eq("33 Harrison Ave Boston MA 02111")
+    expect(court.full_address).to eq("33 Harrison Ave Boston, MA 02111")
   end
 
 end

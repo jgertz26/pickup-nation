@@ -2,7 +2,7 @@
 
 <%= render "search" %>
 
-<ol class="courts-container">
+<ol class="courts-container" start=<%= @start %>>
   <% @courts.each do |court| %>
     <div class="list-court">
       <li>
@@ -13,3 +13,7 @@
     </div>
     <% end %>
 </ol>
+
+<div class="page-links">
+  <%= paginate @courts %>
+</div>
