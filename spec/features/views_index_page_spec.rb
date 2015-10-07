@@ -15,7 +15,6 @@ So that I can find one near me that suits my needs.
     court_2 = FactoryGirl.create(:court)
 
     visit courts_path
-    save_and_open_page
     expect(page).to have_content(court_1.name)
     expect(page).to have_content(court_1.full_address)
     expect(page).to have_content(court_2.name)
