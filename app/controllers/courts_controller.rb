@@ -1,5 +1,6 @@
 class CourtsController < ApplicationController
   before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_admin, only: :destroy
 
   def index
     @courts = Court.all
@@ -59,6 +60,13 @@ class CourtsController < ApplicationController
   def require_login
     unless current_user
       flash[:error] = "You need to log in to do that!"
+      redirect_to root_path
+    end
+  end
+
+  def require_admin
+    unless current_user.admin
+      flash[:error] = "You must be an admin to do that!"
       redirect_to root_path
     end
   end

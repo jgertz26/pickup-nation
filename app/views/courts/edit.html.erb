@@ -32,4 +32,6 @@
 
 <% end %>
 
-<%= link_to "Delete Court", court_path(@court), method: :delete  %>
+<% if current_user.admin %>
+  <%= link_to "Delete Court", court_path(@court), method: :delete  %>
+<% end %>
