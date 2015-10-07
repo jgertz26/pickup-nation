@@ -6,12 +6,12 @@ I want to edit a court
 Because somebody put some wrong information
 ) do
 
-  #Acceptance Criteria
-  #[X] User can visit edit court page from the show page
-  #[X] User fills in necessary information, submits, and is taken to the
-  #    show page, with a success message
-  #[X] User must be logged in
-  #[X] User sees errors if information is invalid
+  # Acceptance Criteria
+  # [X] User can visit edit court page from the show page
+  # [X] User fills in necessary information, submits, and is taken to the
+  #     show page, with a success message
+  # [X] User must be logged in
+  # [X] User sees errors if information is invalid
 
   let(:court) { FactoryGirl.create(:court) }
   let(:user) { FactoryGirl.create(:user) }

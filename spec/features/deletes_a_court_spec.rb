@@ -6,10 +6,10 @@ I want to delete a court
 Because someone built an apartment complex on it
 ) do
 
-  #Acceptance Criteria
-  #[X] User can click delete link on edit page
-  #[X] User must be logged in, and an admin
-  #[X] User is taken to the homepage with success message
+  # Acceptance Criteria
+  # [X] User can click delete link on edit page
+  # [X] User must be logged in, and an admin
+  # [X] User is taken to the homepage with success message
 
   let(:court) { FactoryGirl.create(:court) }
   let(:user) { FactoryGirl.create(:user) }
