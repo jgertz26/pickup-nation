@@ -81,7 +81,7 @@ class CourtsController < ApplicationController
     if Rails.env.development? || Rails.env.test?
       Geocoder.search("33 Harrison Ave Boston MA 02111")[0]
     else
-      Geocoder.search(request.remote_ip)[0]
+      request.location
     end
   end
 
