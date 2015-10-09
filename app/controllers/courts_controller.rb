@@ -31,10 +31,10 @@ class CourtsController < ApplicationController
     @court = Court.new(court_params)
 
     if @court.save
-      flash[:notice] = "Court added!"
+      flash[:success] = "Court added!"
       redirect_to court_path(@court)
     else
-      flash[:errors] = @court.errors.full_messages.join(" - ")
+      flash[:alert] = @court.errors.full_messages.join(" - ")
       render :new
     end
   end
@@ -47,10 +47,10 @@ class CourtsController < ApplicationController
     @court = Court.find(params["id"])
 
     if @court.update(court_params)
-      flash[:notice] = "Court updated!"
+      flash[:success] = "Court updated!"
       redirect_to court_path(@court)
     else
-      flash[:errors] = @court.errors.full_messages.join(" - ")
+      flash[:alert] = @court.errors.full_messages.join(" - ")
       render :edit
     end
   end
@@ -58,7 +58,7 @@ class CourtsController < ApplicationController
   def destroy
     @court = Court.find(params[:id])
     @court.destroy
-    flash[:notice] = "Court deleted!"
+    flash[:success] = "Court deleted!"
     redirect_to root_path
   end
 
@@ -66,13 +66,14 @@ class CourtsController < ApplicationController
 
   def court_params
     params.require(:court).permit(
-      :name, :street_address, :city, :state, :zip, :hoop_count, :setting, :hours
+      :name, :street_address, :city, :state, :zip,
+      :hoop_count, :setting, :hours, :avatar
     )
   end
 
   def require_login
     unless current_user
-      flash[:error] = "You need to log in to do that!"
+      flash[:alert] = "You need to log in to do that!"
       redirect_to root_path
     end
   end
@@ -87,7 +88,7 @@ class CourtsController < ApplicationController
 
   def require_admin
     unless current_user.admin
-      flash[:error] = "You must be an admin to do that!"
+      flash[:alert] = "You must be an admin to do that!"
       redirect_to root_path
     end
   end
