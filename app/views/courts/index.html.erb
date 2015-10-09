@@ -1,19 +1,21 @@
-<h1>Discover Courts</h1>
+<div id="page-content" class="small-12-centered medium-8-centered columns">
+  <h1>Discover Courts</h1>
 
-<%= render "search" %>
+  <%= render "layouts/search" %>
 
-<ol class="courts-container" start=<%= @start %>>
-  <% @courts.each do |court| %>
-    <div class="list-court">
-      <li>
-        <%= link_to court.name, court_path(court) %><br>
-        <%= court.full_address %><br>
-        <%= court.distance_from(@user_coordinates).round(1) %> miles away
-      </li>
-    </div>
-    <% end %>
-</ol>
+  <ol class="courts-container" start=<%= @start %>>
+    <% @courts.each do |court| %>
+      <div class="list-court">
+        <li>
+          <%= link_to court.name, court_path(court) %><br>
+          <%= court.full_address %><br>
+          <%= court.distance_from(@user_coordinates).round(1) %> miles away
+        </li>
+      </div>
+      <% end %>
+  </ol>
 
-<div class="page-links">
-  <%= paginate @courts %>
+  <div class="page-links">
+    <%= paginate @courts %>
+  </div>
 </div>

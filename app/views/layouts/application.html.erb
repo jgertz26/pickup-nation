@@ -7,37 +7,45 @@
   <script src="//maps.googleapis.com/maps/api/js"></script>
 </head>
 <body>
-
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">PickupNation</a></h1>
-      </li>
-    </ul>
-
-    <section class="top-bar-section">
-      <ul class="right">
-        <li>
-          <%= link_to "Add New Court", new_court_path %>
+  <div class="contain-to-grid">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">PickupNation</a></h1>
         </li>
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
       </ul>
-    </section>
-  </nav>
 
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li>
+            <%= link_to "Add New Court", new_court_path %>
+          </li>
+          <%- if current_user -%>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <%- else -%>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <%- end -%>
+        </ul>
+      </section>
+    </nav>
+  </div>
+
+
+  <div id="background">
+
+    <%- flash.each do |key, value| -%>
+      <div data-alert class="alert-box <%= key %>">
+        <%= value %>
+      </div>
+    <%- end -%>
+
+    <div class="row">
+
+        <%= yield %>
+
     </div>
-  <%- end -%>
-
-  <%= yield %>
-
+  </div>
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>
 </body>
