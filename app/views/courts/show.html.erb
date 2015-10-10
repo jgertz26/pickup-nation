@@ -14,8 +14,8 @@
 
   <div class="other-info">
     Setting: <%= @court.setting %><br>
-    Hours: <%= @court.hours %><br>
     Number of Hoops: <%= @court.hoop_count %><br>
+    <%= "Hours: #{@court.hours}" unless @court.hours.nil?%><br>
   </div>
 
   <br>
