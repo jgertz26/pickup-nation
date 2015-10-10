@@ -1,7 +1,6 @@
 
 $(document).ready(function(){
-  var path = window.location.pathname
-  var courtId = path.slice(path.lastIndexOf('/') + 1)
+  var path = window.location.pathname;
 
   $.ajax({
     url: path,
@@ -12,11 +11,13 @@ $(document).ready(function(){
   .done(function(court){
 
     var courtLocation=new google.maps.LatLng(court.latitude, court.longitude);
-    google.maps.event.addDomListener(window, 'load', initializeShowMap(courtLocation));
-
-  })
-
-})
+    google.maps.event.addDomListener(
+      window,
+      'load',
+       initializeShowMap(courtLocation)
+     );
+  });
+});
 
 function initializeShowMap(location){
 

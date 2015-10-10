@@ -21,7 +21,6 @@ class CourtsController < ApplicationController
 
   def show
     @court = Court.find(params["id"])
-    
     respond_to do |format|
       format.html
       format.json { render json: @court }
