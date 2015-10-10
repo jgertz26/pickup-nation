@@ -11,16 +11,20 @@ class CourtsController < ApplicationController
       @range = params["range"]
     end
 
-    @page = params["page"]
-    @page ||= 1
-    @start_num = @page.to_i * 5 - 4
+    page = params["page"]
+    page ||= 1
+
     @user_coordinates = [user_location.latitude, user_location.longitude]
     @query_location = "#{user_location.city}, #{user_location.state_code}"
-    @courts = Court.near(@user_coordinates, @range).page(@page)
+    @courts = Court.near(@user_coordinates, @range).page(page)
   end
 
   def show
     @court = Court.find(params["id"])
+    respond_to do |format|
+      format.html
+      format.json { render json: @court }
+    end
   end
 
   def new

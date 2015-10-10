@@ -1,11 +1,28 @@
-var lat = parseFloat($("#lat").text());
-var lon = parseFloat($("#lon").text());
-var myCenter=new google.maps.LatLng(lat, lon);
 
-function initialize(){
+$(document).ready(function(){
+  var path = window.location.pathname;
+
+  $.ajax({
+    url: path,
+    method: 'GET',
+    dataType: 'json'
+  })
+
+  .done(function(court){
+
+    var courtLocation=new google.maps.LatLng(court.latitude, court.longitude);
+    google.maps.event.addDomListener(
+      window,
+      'load',
+       initializeShowMap(courtLocation)
+     );
+  });
+});
+
+function initializeShowMap(location){
 
   var mapProp = {
-    center:myCenter,
+    center: location,
     zoom:17,
     mapTypeId:google.maps.MapTypeId.HYBRID,
     mapTypeControl: false,
@@ -15,10 +32,8 @@ function initialize(){
   var map=new google.maps.Map(document.getElementById('googleMap'),mapProp);
 
   var marker=new google.maps.Marker({
-    position:myCenter,
+    position:location,
     });
 
   marker.setMap(map);
 }
-
-google.maps.event.addDomListener(window, 'load', initialize);
