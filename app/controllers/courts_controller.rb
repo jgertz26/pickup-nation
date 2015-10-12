@@ -18,8 +18,6 @@ class CourtsController < ApplicationController
     @query_location = "#{user_location.city}, #{user_location.state_code}"
     @courts = Court.near(@user_coordinates, @range).page(page)
 
-    binding.pry
-
     respond_to do |format|
       format.html
       format.json { render json: { courts: @courts,

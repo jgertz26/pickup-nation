@@ -1,6 +1,4 @@
-$("#search-button").click(function(){
-  event.preventDefault()
-    debugger;
+$("#search-button").on("click", function(event){
 
   var paramsData = {
     range: $("range-box").val(),
@@ -19,16 +17,13 @@ $("#search-button").click(function(){
     var centerCoords = json["user_coordinates"];
     var center = new google.maps.LatLng(centerCoords[0], centerCoords[1]);
 
-    google.maps.event.addDomListener(
-      window,
-      'load',
-       initializeIndexMap(center, courts)
-     );
+    $(document).ready(initializeIndexMap(center, courts))
   });
 });
 
-function initializeIndexMap(center, courts){
 
+function initializeIndexMap(center, courts){
+  debugger;
   var mapProp = {
     center: center,
     zoom: 10,
@@ -36,7 +31,6 @@ function initializeIndexMap(center, courts){
     mapTypeControl: false,
     streetViewControl: false
   };
-
   var map=new google.maps.Map(document.getElementById('indexMap'),mapProp);
 
   var markers = [];
