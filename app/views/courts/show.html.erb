@@ -22,31 +22,35 @@
 
 
   <% unless @meetups_today.empty? %>
-    <h5>Meetups Today:</h5>
-    <ul>
-      <% @meetups_today.each do |meetup| %>
-        <li>
-          <%= image_tag "#{meetup.user.avatar}", class: "user-avatar" %>
-          <%= "#{meetup.user.username} -
-            #{meetup.start_time.strftime('%l:%M %P')}" %>
-          <%= render "meetup_details", meetup: meetup %>
-        </li>
-      <% end %>
-    </ul>
+    <div class="meetups-today">
+      <h5>Meetups today:</h5>
+      <ul>
+        <% @meetups_today.each do |meetup| %>
+          <li>
+            <%= image_tag "#{meetup.user.avatar}", class: "user-avatar" %>
+            <%= "#{meetup.user.username} -
+              #{meetup.start_time.strftime('%l:%M %P')}" %>
+            <%= render "meetup_details", meetup: meetup %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
   <% unless @meetups_this_week.empty? %>
-    <h5>Meetups this week:</h5>
-    <ul>
-      <% @meetups_this_week.each do |meetup| %>
-        <li>
-          <%= image_tag "#{meetup.user.avatar}", class: "user-avatar" %>
-          <%= "#{meetup.user.username} -
-            #{meetup.start_time.strftime('%a. %m/%d, %l:%M %P')}" %>
-            <%= render "meetup_details", meetup: meetup %>
-        </li>
-      <% end %>
-    </ul>
+    <div class="meetups-week">
+      <h5>Later this week:</h5>
+      <ul>
+        <% @meetups_this_week.each do |meetup| %>
+          <li>
+            <%= image_tag "#{meetup.user.avatar}", class: "user-avatar" %>
+            <%= "#{meetup.user.username} -
+              #{meetup.start_time.strftime('%a. %m/%d, %l:%M %P')}" %>
+              <%= render "meetup_details", meetup: meetup %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
 </div>

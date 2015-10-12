@@ -1,4 +1,4 @@
-<% unless meetup.description.nil? %>
+<% unless meetup.description == "" || meetup.description.nil? %>
   <br>Details: <%= meetup.description %>
 <% end %>
 
@@ -10,7 +10,7 @@
 <% if current_user %>
   <% if current_user.creator?(meetup) %>
     <br>
-    <%= link_to "Update meetup",
+    <%= link_to "Provide update",
         edit_court_meetup_path(@court, meetup) %>
   <% end %>
 

@@ -22,10 +22,6 @@ class MeetupsController < ApplicationController
   def edit
     @meetup = Meetup.find(params["id"])
     @court = @meetup.court
-
-    if Time.now > @meetup.start_time
-      redirect_to court_path(@court)
-    end
   end
 
   def update

@@ -24,7 +24,6 @@ So I can schedule games there
 
     expect(page).to have_content("Submit New Court")
 
-
     fill_in "Name of court", with: court.name
     fill_in "Street address", with: court.street_address
     fill_in "City", with: court.city
