@@ -1,6 +1,3 @@
-<p id="lat" hidden><%= @court.latitude %></p>
-<p id="lon" hidden><%= @court.longitude %></p>
-
 <div id="page-content" class="small-12-centered medium-8-centered columns">
   <h1><%= @court.name %></h1>
 
@@ -21,6 +18,35 @@
   <br>
   <%= link_to "Edit Court", edit_court_path(@court) %>
 
-  <%= javascript_include_tag 'show_marker' %>
+  <%= link_to "Schedule a Meetup", new_court_meetup_path(@court) %>
+
+
+  <% unless @meetups_today.empty? %>
+    <h5>Meetups Today:</h5>
+    <ul>
+      <% @meetups_today.each do |meetup| %>
+        <li>
+          <%= image_tag "#{current_user.avatar}", class: "user-avatar" %>
+          <%= "#{meetup.user.username} -
+            #{meetup.start_time.strftime('%l:%M %P')}" %>
+          <%= render "meetup_details", meetup: meetup %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% unless @meetups_this_week.empty? %>
+    <h5>Meetups this week:</h5>
+    <ul>
+      <% @meetups_this_week.each do |meetup| %>
+        <li>
+          <%= image_tag "#{current_user.avatar}", class: "user-avatar" %>
+          <%= "#{meetup.user.username} -
+            #{meetup.start_time.strftime('%a. %m/%d, %l:%M %P')}" %>
+            <%= render "meetup_details", meetup: meetup %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 
 </div>

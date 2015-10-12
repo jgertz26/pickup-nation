@@ -21,6 +21,20 @@ class CourtsController < ApplicationController
 
   def show
     @court = Court.find(params["id"])
+    meetups = @court.meetups
+    @meetups_today = []
+    @meetups_this_week = []
+    today = Date.today
+
+    meetups.each do |meetup|
+      meetup_date = meetup.start_time.to_date
+      if meetup_date == today
+        @meetups_today << meetup
+      elsif meetup_date > today && meetup_date < (today + 7.days)
+        @meetups_this_week << meetup
+      end
+    end
+
     respond_to do |format|
       format.html
       format.json { render json: @court }
@@ -71,15 +85,8 @@ class CourtsController < ApplicationController
   def court_params
     params.require(:court).permit(
       :name, :street_address, :city, :state, :zip,
-      :hoop_count, :setting, :hours, :avatar
+      :hoop_count, :setting, :hours
     )
-  end
-
-  def require_login
-    unless current_user
-      flash[:alert] = "You need to log in to do that!"
-      redirect_to root_path
-    end
   end
 
   def get_user_location
@@ -87,13 +94,6 @@ class CourtsController < ApplicationController
       Geocoder.search("33 Harrison Ave Boston MA 02111")[0]
     else
       request.location
-    end
-  end
-
-  def require_admin
-    unless current_user.admin
-      flash[:alert] = "You must be an admin to do that!"
-      redirect_to root_path
     end
   end
 end

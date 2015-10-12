@@ -44,7 +44,8 @@ So I can schedule games there
 
   scenario "user is not logged in" do
 
-    visit new_court_path
+    visit root_path
+    click_link "Add New Court"
 
     expect(page).to have_content("You need to log in to do that!")
     expect(page).to have_content("Welcome to Pickup Nation")

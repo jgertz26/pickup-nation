@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Court do
+  it { should have_many(:meetups) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:street_address) }

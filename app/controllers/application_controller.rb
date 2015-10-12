@@ -5,6 +5,20 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def require_admin
+    unless current_user && current_user.admin
+      flash[:alert] = "You must be an admin to do that!"
+      redirect_to (:back)
+    end
+  end
+
+  def require_login
+    unless current_user
+      flash[:alert] = "You need to log in to do that!"
+      redirect_to (:back)
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

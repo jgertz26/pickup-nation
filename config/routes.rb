@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :courts
+  resources :courts do
+    resources :meetups, only: [:new, :create, :edit, :update, :destroy]
+  end
 end
