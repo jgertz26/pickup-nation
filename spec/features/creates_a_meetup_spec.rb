@@ -43,7 +43,7 @@ So others can join.
     click_link "Schedule a Meetup"
     expect(page).to have_content("Schedule a meetup at #{court.name}")
 
-    select((Date.today + 1).day, from: 'meetup_start_time_3i')
+    select((Time.zone.today + 1).day, from: 'meetup_start_time_3i')
     select('06 PM', from: 'meetup_start_time_4i')
     select('15', from: "meetup_start_time_5i")
 

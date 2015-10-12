@@ -6,11 +6,11 @@
     <%= f.label :start_time %>
     <%= f.datetime_select :start_time,
                           { ampm: true, minute_step: 15,
-                          start_year: Time.now.year,
-                          end_year: (Time.now.year + 1),
+                          start_year: Time.zone.now.year,
+                          end_year: (Time.zone.now.year + 1),
                           start_hour: 6,
                           end_hour: 22,
-                          default: Time.now }
+                          default: Time.zone.now }
                           %>
 
     <%= f.label :description %>

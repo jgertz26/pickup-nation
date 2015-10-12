@@ -24,7 +24,7 @@ class CourtsController < ApplicationController
     meetups = @court.meetups
     @meetups_today = []
     @meetups_this_week = []
-    today = Date.today
+    today = Time.zone.today
 
     meetups.each do |meetup|
       meetup_date = meetup.start_time.to_date

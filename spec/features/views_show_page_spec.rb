@@ -14,20 +14,26 @@ So I can see upcoming meetups.
   scenario "user views show page" do
     court = FactoryGirl.create(:court, hours: "9AM-10:30PM")
     user_1 = FactoryGirl.create(:user)
-    meetup_1 = FactoryGirl.create(:meetup,
-                                  user: user_1,
-                                  court: court,
-                                  description: "Ballin")
-    meetup_2 = FactoryGirl.create(:meetup,
-                                  user: user_1,
-                                  court: court,
-                                  description: "Shot Callin",
-                                  start_time: Time.now + 100000)
-    meetup_3 = FactoryGirl.create(:meetup,
-                                  user: user_1,
-                                  court: court,
-                                  description: "Not hoggin",
-                                  start_time: Time.now + 10000000)
+    FactoryGirl.create(
+      :meetup,
+      user: user_1,
+      court: court,
+      description: "Ballin"
+    )
+    FactoryGirl.create(
+      :meetup,
+      user: user_1,
+      court: court,
+      description: "Shot Callin",
+      start_time: Time.zone.now + 100000
+    )
+    FactoryGirl.create(
+      :meetup,
+      user: user_1,
+      court: court,
+      description: "Not hoggin",
+      start_time: Time.zone.now + 10000000
+    )
 
     visit courts_path
     click_link court.name
