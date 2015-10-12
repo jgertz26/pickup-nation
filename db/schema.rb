@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007190603) do
+ActiveRecord::Schema.define(version: 20151011145333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20151007190603) do
   end
 
   add_index "courts", ["street_address", "city", "state", "zip"], name: "index_courts_on_street_address_and_city_and_state_and_zip", unique: true, using: :btree
+
+  create_table "meetups", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "court_id",    null: false
+    t.datetime "start_time",  null: false
+    t.string   "description"
+    t.string   "condition"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "",    null: false

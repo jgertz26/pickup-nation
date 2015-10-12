@@ -21,4 +21,11 @@ FactoryGirl.define do
     longitude -0.012345
   end
 
+  factory :meetup do
+    description "Gon' hoop"
+    start_time Time.zone.now
+    court
+    user
+  end
+
 end

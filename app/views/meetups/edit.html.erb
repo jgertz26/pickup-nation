@@ -1,0 +1,18 @@
+<div id="page-content" class="new-meetup small-12-centered medium-8-centered columns">
+
+  <h4>
+    <%= @court.name %> meetup on
+    <%= @meetup.start_time.strftime('%b. %e at %l:%M %P') %>
+  </h4>
+
+  <%= form_for [@court, @meetup] do |f| %>
+
+    <%= f.label :condition, "Updates" %>
+    <%= f.text_area :condition,
+        placeholder: "How many people are playing? What condition is the court in?",
+        required: true %>
+
+    <%= f.submit ("Update Meetup")%>
+  <% end %>
+
+</div>

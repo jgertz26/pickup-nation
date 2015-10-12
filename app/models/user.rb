@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :meetups
+
   mount_uploader :avatar, AvatarUploader
 
   validates :email, presence: true, uniqueness: true
@@ -7,4 +9,8 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def creator?(meetup)
+    meetup.user == self
+  end
 end
