@@ -7,13 +7,15 @@
   <em> - <%= time_ago_in_words(meetup.updated_at) %> ago</em>
 <% end %>
 
-<% if current_user.creator?(meetup) %>
-  <br>
-  <%= link_to "Update meetup",
-      edit_court_meetup_path(@court, meetup) %>
-<% end %>
+<% if current_user %>
+  <% if current_user.creator?(meetup) %>
+    <br>
+    <%= link_to "Update meetup",
+        edit_court_meetup_path(@court, meetup) %>
+  <% end %>
 
-<% if current_user.creator?(meetup) || current_user.admin %>
-  - <%= link_to "Delete meetup",
-      court_meetup_path(@court, meetup), method: :delete %>
+  <% if current_user.creator?(meetup) || current_user.admin %>
+    - <%= link_to "Delete meetup",
+        court_meetup_path(@court, meetup), method: :delete %>
+  <% end %>
 <% end %>

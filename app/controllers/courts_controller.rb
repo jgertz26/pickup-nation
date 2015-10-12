@@ -20,6 +20,7 @@ class CourtsController < ApplicationController
   end
 
   def show
+    binding.pry
     @court = Court.find(params["id"])
     meetups = @court.meetups
     @meetups_today = []
