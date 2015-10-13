@@ -34,10 +34,12 @@ Because somebody put some wrong information
   end
 
   scenario "user is not logged in" do
-    visit edit_court_path(court)
+
+    visit court_path(court)
+    click_link "Edit Court"
 
     expect(page).to have_content("You need to log in to do that!")
-    expect(page).to have_content("Welcome to Pickup Nation")
+    expect(page).to have_content(court.name)
 
   end
 

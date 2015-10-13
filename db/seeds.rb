@@ -93,3 +93,13 @@ Court.create(
   hoop_count: 2,
   setting: "Outdoor without lights"
 )
+
+Court.create(
+  name: "Reggie Wong Memorial Playground",
+  street_address: "151 Kneeland St",
+  city: "Boston",
+  state: "MA",
+  zip: "02111",
+  hoop_count: 4,
+  setting: "Outdoor with lights"
+)
