@@ -1,13 +1,16 @@
-var indexdata = $("#indexMap")[0].dataset;
 
-var userCoords = indexdata.user.split(",");
-var center = new google.maps.LatLng(userCoords[0], userCoords[1]);
+if ($("#indexMap").length > 0) {
+  var indexdata = $("#indexMap")[0].dataset;
 
-var courtLats = indexdata.lats.split(",");
-var courtLons = indexdata.lons.split(",");
-var zoom = parseInt(indexdata.zoom);
+  var userCoords = indexdata.user.split(",");
+  var center = new google.maps.LatLng(userCoords[0], userCoords[1]);
 
-$(document).ready(initializeIndexMap(center, courtLats, courtLons, zoom));
+  var courtLats = indexdata.lats.split(",");
+  var courtLons = indexdata.lons.split(",");
+  var zoom = parseInt(indexdata.zoom);
+
+  $(document).ready(initializeIndexMap(center, courtLats, courtLons, zoom));
+}
 
 function initializeIndexMap(center, lats, lons, zoom){
   var mapProp = {
