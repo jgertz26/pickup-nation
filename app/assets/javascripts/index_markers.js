@@ -1,5 +1,5 @@
 // $("#search-button").on("click", function(event){
-// 
+//
 //   var paramsData = {
 //     range: $("range-box").val(),
 //     location: $("location-box").val()
