@@ -11,8 +11,8 @@ $(document).ready(function(){
 
     var courtLocation=new google.maps.LatLng(latitude, longitude);
 
-   initializeShowMap(courtLocation)
-  };
+   initializeShowMap(courtLocation);
+  }
 });
 
 function initializeShowMap(location){

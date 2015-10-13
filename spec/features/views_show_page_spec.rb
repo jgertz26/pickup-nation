@@ -21,6 +21,6 @@ So I can determine if it's worth my time.
     expect(page).to have_content(court_1.hoop_count)
     expect(page).to have_content(court_1.setting)
     expect(page).to have_content(court_1.hours)
-    expect(page).to have_selector('div#googleMap')
+    expect(page).to have_selector('div#showMap')
   end
 end
