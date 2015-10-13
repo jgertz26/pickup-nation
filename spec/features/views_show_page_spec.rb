@@ -25,14 +25,14 @@ So I can see upcoming meetups.
       user: user_1,
       court: court,
       description: "Shot Callin",
-      start_time: Time.zone.now + 100000
+      start_time: Time.now + 100000
     )
     FactoryGirl.create(
       :meetup,
       user: user_1,
       court: court,
       description: "Not hoggin",
-      start_time: Time.zone.now + 10000000
+      start_time: Time.now + 10000000
     )
 
     visit courts_path
