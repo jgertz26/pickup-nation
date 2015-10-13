@@ -4,9 +4,14 @@
   <%= render "layouts/search" %>
 
   <div id="indexMap" style="width:300px;height:200px;"
-    data-long=<%=@courts%> ></div>
+    data-user=<%=@user_coordinates.join(',')%>
+    data-lats=<%=@court_lats.join(',')%>
+    data-lons=<%=@court_lons.join(',')%>
+    data-zoom=<%=@zoom%>
+    data-startnum=<%=@start_num%> >
+  </div>
 
-  <ol class="courts-container" start=<%= @start %>>
+  <ol class="courts-container">
     <% @courts.each do |court| %>
       <div class="list-court">
         <li>

@@ -18,11 +18,15 @@ class CourtsController < ApplicationController
     @query_location = "#{user_location.city}, #{user_location.state_code}"
     @courts = Court.near(@user_coordinates, @range).page(page)
 
-    respond_to do |format|
-      format.html
-      format.json { render json: { courts: @courts,
-                                   user_coordinates: @user_coordinates }}
+    @court_lats = []
+    @court_lons = []
+    @courts.each do |court|
+      @court_lats << court.latitude
+      @court_lons << court.longitude
     end
+
+    farthest_court_distance = @courts.last.distance_from(@user_coordinates)
+    @zoom = to_zoom(farthest_court_distance)
   end
 
   def show
@@ -100,6 +104,16 @@ class CourtsController < ApplicationController
     unless current_user.admin
       flash[:alert] = "You must be an admin to do that!"
       redirect_to root_path
+    end
+  end
+
+  def to_zoom(distance)
+    if distance < 5
+      11
+    elsif distance < 15
+      10
+    else
+      9
     end
   end
 end

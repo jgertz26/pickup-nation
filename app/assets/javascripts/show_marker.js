@@ -1,22 +1,17 @@
+
+
 $(document).ready(function(){
   var path = window.location.pathname;
 
   if (/^\/courts\/(\d)+$/.test(path)) {
-    $.ajax({
-      url: path,
-      method: 'GET',
-      dataType: 'json'
-    })
 
-    .done(function(court){
+    var showdata = $("#showMap")[0].dataset;
+    var latitude = showdata.lat;
+    var longitude = showdata.lon;
 
-      var courtLocation=new google.maps.LatLng(court.latitude, court.longitude);
-      google.maps.event.addDomListener(
-        window,
-        'load',
-         initializeShowMap(courtLocation)
-       );
-    });
+    var courtLocation=new google.maps.LatLng(latitude, longitude);
+
+   initializeShowMap(courtLocation)
   };
 });
 
