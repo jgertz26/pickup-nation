@@ -1,25 +1,25 @@
-$("#search-button").on("click", function(event){
-
-  var paramsData = {
-    range: $("range-box").val(),
-    location: $("location-box").val()
-  };
-
-  $.ajax({
-    url: '/courts',
-    method: 'GET',
-    dataType: 'json',
-    data: paramsData
-  })
-
-  .done(function(json){
-    var courts = json["courts"]
-    var centerCoords = json["user_coordinates"];
-    var center = new google.maps.LatLng(centerCoords[0], centerCoords[1]);
-
-    $(document).ready(initializeIndexMap(center, courts))
-  });
-});
+// $("#search-button").on("click", function(event){
+// 
+//   var paramsData = {
+//     range: $("range-box").val(),
+//     location: $("location-box").val()
+//   };
+//
+//   $.ajax({
+//     url: '/courts',
+//     method: 'GET',
+//     dataType: 'json',
+//     data: paramsData
+//   })
+//
+//   .done(function(json){
+//     var courts = json["courts"]
+//     var centerCoords = json["user_coordinates"];
+//     var center = new google.maps.LatLng(centerCoords[0], centerCoords[1]);
+//     debugger;
+//     $(document).ready(initializeIndexMap(center, courts))
+//   });
+// });
 
 
 function initializeIndexMap(center, courts){

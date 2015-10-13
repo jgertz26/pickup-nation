@@ -3,7 +3,8 @@
 
   <%= render "layouts/search" %>
 
-  <div id="indexMap" style="width:300px;height:200px;"></div>
+  <div id="indexMap" style="width:300px;height:200px;"
+    data-long=<%=@courts%> ></div>
 
   <ol class="courts-container" start=<%= @start %>>
     <% @courts.each do |court| %>
