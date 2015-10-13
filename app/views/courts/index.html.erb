@@ -3,7 +3,15 @@
 
   <%= render "layouts/search" %>
 
-  <ol class="courts-container" start=<%= @start %>>
+  <div id="indexMap" style="width:300px;height:200px;"
+    data-user=<%=@user_coordinates.join(',')%>
+    data-lats=<%=@court_lats.join(',')%>
+    data-lons=<%=@court_lons.join(',')%>
+    data-zoom=<%=@zoom%>
+    data-startnum=<%=@start_num%> >
+  </div>
+
+  <ol class="courts-container">
     <% @courts.each do |court| %>
       <div class="list-court">
         <li>
