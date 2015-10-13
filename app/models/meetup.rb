@@ -1,6 +1,7 @@
 class Meetup < ActiveRecord::Base
   belongs_to :user
   belongs_to :court
+  has_many :attendees, dependent: :destroy
 
   validates :start_time, presence: true
 

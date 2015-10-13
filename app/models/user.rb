@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :meetups
+  has_many :meetups, dependent: :destroy
+  has_many :attendees, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 
