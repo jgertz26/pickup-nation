@@ -1,19 +1,13 @@
+if ($("#showMap").length > 0) {
 
+  var showdata = $("#showMap")[0].dataset;
+  var latitude = showdata.lat;
+  var longitude = showdata.lon;
 
-$(document).ready(function(){
-  var path = window.location.pathname;
+  var courtLocation=new google.maps.LatLng(latitude, longitude);
 
-  if (/^\/courts\/(\d)+$/.test(path)) {
-
-    var showdata = $("#showMap")[0].dataset;
-    var latitude = showdata.lat;
-    var longitude = showdata.lon;
-
-    var courtLocation=new google.maps.LatLng(latitude, longitude);
-
-   initializeShowMap(courtLocation);
-  }
-});
+ $(document).ready(initializeShowMap(courtLocation));
+}
 
 function initializeShowMap(location){
 
