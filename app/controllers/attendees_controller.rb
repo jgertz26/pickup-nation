@@ -12,5 +12,4 @@ class AttendeesController < ApplicationController
     flash[:notice] = "Successfully left meetup"
     redirect_to :back
   end
-
 end
