@@ -1,23 +1,13 @@
+if ($("#showMap").length > 0) {
 
-$(document).ready(function(){
-  var path = window.location.pathname;
+  var showdata = $("#showMap")[0].dataset;
+  var latitude = showdata.lat;
+  var longitude = showdata.lon;
 
-  $.ajax({
-    url: path,
-    method: 'GET',
-    dataType: 'json'
-  })
+  var courtLocation=new google.maps.LatLng(latitude, longitude);
 
-  .done(function(court){
-
-    var courtLocation=new google.maps.LatLng(court.latitude, court.longitude);
-    google.maps.event.addDomListener(
-      window,
-      'load',
-       initializeShowMap(courtLocation)
-     );
-  });
-});
+ $(document).ready(initializeShowMap(courtLocation));
+}
 
 function initializeShowMap(location){
 
@@ -29,7 +19,7 @@ function initializeShowMap(location){
     streetViewControl: false
   };
 
-  var map=new google.maps.Map(document.getElementById('googleMap'),mapProp);
+  var map=new google.maps.Map(document.getElementById('showMap'),mapProp);
 
   var marker=new google.maps.Marker({
     position:location,

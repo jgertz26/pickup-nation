@@ -49,5 +49,6 @@ So I can see upcoming meetups.
     expect(page).to have_content(user_1.username)
     expect(page).to_not have_link("Provide update")
     expect(page).to_not have_link("Delete meetup")
+    expect(page).to have_selector('div#showMap')
   end
 end

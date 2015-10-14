@@ -17,6 +17,16 @@ class CourtsController < ApplicationController
     @user_coordinates = [user_location.latitude, user_location.longitude]
     @query_location = "#{user_location.city}, #{user_location.state_code}"
     @courts = Court.near(@user_coordinates, @range).page(page)
+
+    @court_lats = []
+    @court_lons = []
+    @courts.each do |court|
+      @court_lats << court.latitude
+      @court_lons << court.longitude
+    end
+
+    farthest_court_distance = @courts.last.distance_from(@user_coordinates)
+    @zoom = to_zoom(farthest_court_distance)
   end
 
   def show
@@ -33,11 +43,6 @@ class CourtsController < ApplicationController
       elsif meetup_date > today && meetup_date < (today + 7.days)
         @meetups_this_week << meetup
       end
-    end
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @court }
     end
   end
 
@@ -94,6 +99,23 @@ class CourtsController < ApplicationController
       Geocoder.search("33 Harrison Ave Boston MA 02111")[0]
     else
       request.location
+    end
+  end
+
+  def require_admin
+    unless current_user.admin
+      flash[:alert] = "You must be an admin to do that!"
+      redirect_to root_path
+    end
+  end
+
+  def to_zoom(distance)
+    if distance < 5
+      11
+    elsif distance < 15
+      10
+    else
+      9
     end
   end
 end
