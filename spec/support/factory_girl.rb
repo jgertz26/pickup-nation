@@ -23,7 +23,7 @@ FactoryGirl.define do
 
   factory :meetup do
     description "Gon' hoop"
-    start_time Time.zone.now
+    start_time Time.now
     court
     user
   end

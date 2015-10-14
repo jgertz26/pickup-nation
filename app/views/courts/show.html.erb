@@ -30,7 +30,7 @@
       <ul>
         <% @meetups_today.each do |meetup| %>
           <li>
-            <%= image_tag "#{meetup.user.avatar}", class: "user-avatar" %>
+            <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
             <%= "#{meetup.user.username} -
               #{meetup.start_time.strftime('%l:%M %P')}" %>
             <%= render "meetup_details", meetup: meetup %>
@@ -46,7 +46,7 @@
       <ul>
         <% @meetups_this_week.each do |meetup| %>
           <li>
-            <%= image_tag "#{meetup.user.avatar}", class: "user-avatar" %>
+            <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
             <%= "#{meetup.user.username} -
               #{meetup.start_time.strftime('%a. %m/%d, %l:%M %P')}" %>
               <%= render "meetup_details", meetup: meetup %>
