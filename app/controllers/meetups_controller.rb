@@ -12,7 +12,6 @@ class MeetupsController < ApplicationController
 
     if @meetup.save
       flash[:sucess] = "Meetup scheduled!"
-      create_attendee(@meetup)
       redirect_to court_path(@court)
     else
       flash[:alert] = @meetup.errors.full_messages.join(" - ")
@@ -57,10 +56,5 @@ class MeetupsController < ApplicationController
 
   def meetup_update_params
     params.require(:meetup).permit(:condition)
-  end
-
-  def create_attendee(meetup)
-    Attendee.create!(meetup: meetup, user: current_user)
-    binding.pry
   end
 end
