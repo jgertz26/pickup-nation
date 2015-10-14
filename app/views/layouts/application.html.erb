@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>PickupNation</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= stylesheet_link_tag :application, media: :all %>
+  <%= javascript_include_tag :modernizr %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <% google_key = ENV["GOOGLE_MAPS_API_KEY"] %>
@@ -41,6 +42,7 @@
     <%- flash.each do |key, value| -%>
       <div data-alert class="alert-box <%= key %>">
         <%= value %>
+        <a href="" class="close">&times;</a>
       </div>
     <%- end -%>
 

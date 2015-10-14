@@ -52,13 +52,22 @@ class CourtsController < ApplicationController
 
   def create
     @court = Court.new(court_params)
-
     if @court.save
-      flash[:success] = "Court added!"
-      redirect_to court_path(@court)
+
+      respond_to do |format|
+        format.html do
+          flash[:success] = "Court added!"
+          redirect_to court_path(@court)
+        end
+        format.json { render json: @court }
+      end
+
     else
-      flash[:alert] = @court.errors.full_messages.join(" - ")
-      render :new
+      format.html do
+        flash[:alert] = @court.errors.full_messages.join(" - ")
+        render :new
+      end
+      format.json { render status: 500 }
     end
   end
 
@@ -90,7 +99,7 @@ class CourtsController < ApplicationController
   def court_params
     params.require(:court).permit(
       :name, :street_address, :city, :state, :zip,
-      :hoop_count, :setting, :hours
+      :hoop_count, :setting, :hours, :latitude, :longitude
     )
   end
 

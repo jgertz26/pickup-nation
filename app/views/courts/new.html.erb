@@ -1,4 +1,9 @@
 <div id="page-content" class="small-12-centered medium-8-centered columns">
+
+  <p id="map-error" hidden>
+    Address not recognized. Try again!
+  </p>
+
   <h1>Submit New Court</h1>
 
   <%= form_for @court do |f| %>
@@ -23,13 +28,26 @@
 
     <%= f.label :setting %>
     <%= f.select(:setting,
-    ['Outdoor without lights', 'Outdoor with lights', 'Indoor']) %>
+        ['Outdoor without lights', 'Outdoor with lights', 'Indoor']) %>
 
     <%= f.label :hours,
     "Hours of Operation (if outdoor, include when lights go out)" %>
     <%= f.text_field :hours, placeholder: "Optional" %>
 
-    <%= f.submit "Add Court" %>
+    <%= f.submit "Add Court", id: "show-map-button", class: "button" %>
 
   <% end %>
+
+  <div id="map-and-button" class="" hidden>
+
+    <div id="createMap" style="width:300px;height:300px;"></div>
+    <br>
+
+    <div id="map-buttons" hidden>
+      <%= link_to "Submit", "#",
+          id: "submit-court-button",
+          class: "button success tiny"%>
+    </div>
+
+  </div>
 </div>

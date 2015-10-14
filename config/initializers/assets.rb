@@ -4,6 +4,7 @@
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( show_marker.js )
 Rails.application.config.assets.precompile += %w( index_markers.js )
+Rails.application.config.assets.precompile += %w( create_map.js )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
