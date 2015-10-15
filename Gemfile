@@ -32,6 +32,7 @@ group :development, :test do
   gem 'factory_girl'
   gem 'valid_attribute'
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 2.8.0', require: false
 end
 
