@@ -14,7 +14,7 @@ $("#show-map-button").click(function( event ) {
     state: state,
     zip: zip,
     hoop_count: $("#court_hoop_count").val(),
-    setting: setting = $("#court_setting").val(),
+    setting: $("#court_setting").val(),
     hours: $("#court_hours").val()
   };
 
@@ -56,7 +56,7 @@ $("#show-map-button").click(function( event ) {
           .success(function(court){
             window.location.href = "/courts/" + court.id
           })
-          .fail(function(errors){
+          .fail(function(){
             window.location.href = "/courts/new"
           })
 
@@ -65,18 +65,20 @@ $("#show-map-button").click(function( event ) {
 
     } else {
 
-        $("#map-and-button").hide()
-        $("form").show()
+        $("#map-and-button").hide();
+        $("form").show();
 
         if (status == "ZERO_RESULTS") {
 
-          $("#map-error").html('Address not recognized. Try again!')
-          $("#map-error").show()
+          $("#map-error").html("Address not recognized. Try again!");
+          $("#map-error").show();
 
         } else {
 
-          $("#map-error").html('Geocode was not successful for the following reason: ' + status)
-          $("#map-error").show()
+          $("#map-error").html(
+            "Geocode was not successful for the following reason: " + status
+          );
+          $("#map-error").show();
 
       }
     }
@@ -84,7 +86,7 @@ $("#show-map-button").click(function( event ) {
 });
 
 function placeMarker(location, map) {
-  if (courtMarker != null) {
+  if (courtMarker !== null) {
     courtMarker.setMap(null);
   }
 
