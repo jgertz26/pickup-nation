@@ -10,8 +10,8 @@ FactoryGirl.define do
   end
 
   factory :court do
-    sequence(:name) {|n| "Dinkle Park Courts#{n}" }
-    sequence(:street_address) {|n| "#{n} Beacon St" }
+    sequence(:name) { |n| "Dinkle Park Courts#{n}" }
+    sequence(:street_address) { |n| "#{n} Beacon St" }
     city 'Boston'
     state 'MA'
     zip '02467'
