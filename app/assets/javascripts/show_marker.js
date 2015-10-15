@@ -13,7 +13,7 @@ function initializeShowMap(location){
 
   var mapProp = {
     center: location,
-    zoom:17,
+    zoom:16,
     mapTypeId:google.maps.MapTypeId.HYBRID,
     mapTypeControl: false,
     streetViewControl: false
