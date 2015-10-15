@@ -18,7 +18,7 @@ $("#show-map-button").click(function( event ) {
     hours: $("#court_hours").val()
   };
 
-  var fullAddress = streetAddress + " " + city + " " + state + " " + zip
+  var fullAddress = streetAddress + " " + city + " " + state + " " + zip;
 
   $("form").hide();
   $("#map-error").hide();
@@ -38,7 +38,7 @@ $("#show-map-button").click(function( event ) {
       map.setCenter(results[0].geometry.location);
 
       google.maps.event.addListener(map, 'click', function(event) {
-        $("#map-buttons").show()
+        $("#map-buttons").show();
         placeMarker(event.latLng, map);
         courtParams.latitude = event.latLng.lat();
         courtParams.longitude = event.latLng.lng();
