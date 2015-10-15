@@ -2,19 +2,19 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :user do
-    sequence(:username) {|n| "coolguy#{n}" }
-    sequence(:email) {|n| "user#{n}@example.com" }
+    sequence(:username) { |n| "coolguy#{n}" }
+    sequence(:email) { |n| "user#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
     admin false
   end
 
   factory :court do
-    sequence(:name) {|n| "Dinkle Park Courts#{n}" }
-    sequence(:street_address) {|n| "#{n} Dinkleberry Drive" }
+    sequence(:name) { |n| "Dinkle Park Courts#{n}" }
+    sequence(:street_address) { |n| "#{n} Beacon St" }
     city 'Boston'
     state 'MA'
-    zip '02215'
+    zip '02467'
     setting "Outdoor with lights"
     hoop_count 4
     latitude 40.11245

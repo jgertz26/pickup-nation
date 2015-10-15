@@ -8,6 +8,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'kaminari'
 gem 'pry'
+gem 'modernizr-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -30,6 +31,8 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl'
   gem 'valid_attribute'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 2.8.0', require: false
 end
 

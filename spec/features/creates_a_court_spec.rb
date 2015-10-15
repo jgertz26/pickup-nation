@@ -15,7 +15,7 @@ So I can schedule games there
 
   let(:user) { FactoryGirl.create(:user) }
 
-  scenario "user submits correctly" do
+  scenario "user submits correctly", js: true do
     court = FactoryGirl.build(:court, hours: "TIME")
 
     visit root_path
@@ -34,11 +34,14 @@ So I can schedule games there
     fill_in "Hours", with: court.hours
     click_button "Add Court"
 
+    expect(page).to have_content("Click on the map")
+
+    page.find(".gm-style").click
+    click_link "Submit"
+
     expect(page).to have_content("Court added!")
     expect(page).to have_content(court.name)
     expect(page).to have_content(court.hoop_count)
-
-
   end
 
   scenario "user is not logged in" do
@@ -51,7 +54,7 @@ So I can schedule games there
 
   end
 
-  scenario "user submits blank form" do
+  scenario "user submits blank form", js: true do
     sign_in(user)
     visit new_court_path
 
@@ -60,16 +63,32 @@ So I can schedule games there
     click_button "Add Court"
 
     expect(page).to have_content("Submit New Court")
+    expect(page).to have_content("Address not recognized. Try again!")
+  end
+
+  scenario "user submits valid address with nothing else", js: true do
+    court = FactoryGirl.build(:court, hours: "TIME")
+
+    visit root_path
+    sign_in(user)
+    click_link "Add New Court"
+
+    expect(page).to have_content("Submit New Court")
+
+    fill_in "Street address", with: court.street_address
+    fill_in "City", with: court.city
+    fill_in "State", with: court.state
+    fill_in "Zip Code", with: court.zip
+    click_button "Add Court"
+
+    expect(page).to have_content("Click on the map")
+
+    page.find(".gm-style").click
+    click_link "Submit"
+
+    expect(page).to have_content("Submit New Court")
     expect(page).to have_content("Name can't be blank")
     expect(page).to have_content("Hoop count can't be blank")
     expect(page).to have_content("Hoop count is not a number")
-    expect(page).to have_content("Street address can't be blank")
-    expect(page).to have_content("City can't be blank")
-    expect(page).to have_content("State can't be blank")
-    expect(page).to have_content("State is invalid")
-    expect(page).to have_content("Zip can't be blank")
-    expect(page).to have_content("Zip is the wrong length (should be 5 characters)")
-    expect(page).to have_content("Zip is not a number")
-
   end
 end

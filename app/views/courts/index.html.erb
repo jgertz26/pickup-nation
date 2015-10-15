@@ -3,24 +3,33 @@
 
   <%= render "layouts/search" %>
 
-  <div id="indexMap" style="width:300px;height:200px;"
-    data-user=<%=@user_coordinates.join(',')%>
-    data-lats=<%=@court_lats.join(',')%>
-    data-lons=<%=@court_lons.join(',')%>
-    data-zoom=<%=@zoom%>
-    data-startnum=<%=@start_num%> >
-  </div>
+  <% unless @courts.empty? %>
+    <div id="indexMap" style="width:300px;height:200px;"
+      data-user=<%=@user_coordinates.join(',')%>
+      data-lats=<%=@court_lats.join(',')%>
+      data-lons=<%=@court_lons.join(',')%>
+      data-zoom=<%=@zoom%>
+      data-startnum=<%=@start_num%> >
+    </div>
+  <% end %>
 
   <ol class="courts-container">
-    <% @courts.each do |court| %>
-      <div class="list-court">
-        <li>
-          <%= link_to court.name, court_path(court) %><br>
-          <%= court.full_address %><br>
-          <%= court.distance_from(@user_coordinates).round(1) %> miles away
-        </li>
-      </div>
+    <% if @courts.empty? %>
+      <h5>
+        No courts marked near that area.
+        <%= link_to "Click here to add one.", new_court_path %>
+      </h5>
+    <% else %>
+      <% @courts.each do |court| %>
+        <div class="list-court">
+          <li>
+            <%= link_to court.name, court_path(court) %><br>
+            <%= court.full_address %><br>
+            <%= court.distance_from(@user_coordinates).round(1) %> miles away
+          </li>
+        </div>
       <% end %>
+    <% end %>
   </ol>
 
   <div class="page-links">

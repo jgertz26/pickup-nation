@@ -13,20 +13,27 @@ class CourtsController < ApplicationController
 
     page = params["page"]
     page ||= 1
-
     @user_coordinates = [user_location.latitude, user_location.longitude]
     @query_location = "#{user_location.city}, #{user_location.state_code}"
-    @courts = Court.near(@user_coordinates, @range).page(page)
 
-    @court_lats = []
-    @court_lons = []
-    @courts.each do |court|
-      @court_lats << court.latitude
-      @court_lons << court.longitude
+    if Rails.env.test?
+      @courts = Court.all.page(page)
+    else
+      @courts = Court.near(@user_coordinates, @range).page(page)
     end
 
-    farthest_court_distance = @courts.last.distance_from(@user_coordinates)
-    @zoom = to_zoom(farthest_court_distance)
+    unless @courts.empty?
+
+      @court_lats = []
+      @court_lons = []
+      @courts.each do |court|
+        @court_lats << court.latitude
+        @court_lons << court.longitude
+      end
+
+      farthest_court_distance = @courts.last.distance_from(@user_coordinates)
+      @zoom = to_zoom(farthest_court_distance)
+    end
   end
 
   def show
@@ -52,13 +59,22 @@ class CourtsController < ApplicationController
 
   def create
     @court = Court.new(court_params)
-
     if @court.save
-      flash[:success] = "Court added!"
-      redirect_to court_path(@court)
+
+      respond_to do |format|
+        format.json do
+          flash[:success] = "Court added!"
+          render json: @court
+        end
+      end
+
     else
-      flash[:alert] = @court.errors.full_messages.join(" - ")
-      render :new
+      respond_to do |format|
+        format.json do
+          flash[:alert] = @court.errors.full_messages.join(" - ")
+          render json: @court.errors.full_messages.join(" - ")
+        end
+      end
     end
   end
 
@@ -90,7 +106,7 @@ class CourtsController < ApplicationController
   def court_params
     params.require(:court).permit(
       :name, :street_address, :city, :state, :zip,
-      :hoop_count, :setting, :hours
+      :hoop_count, :setting, :hours, :latitude, :longitude
     )
   end
 
