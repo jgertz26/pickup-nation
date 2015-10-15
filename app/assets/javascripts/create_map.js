@@ -53,9 +53,13 @@ $("#show-map-button").click(function( event ) {
             dataType: 'json',
             data: fullParams
           })
-          .done(function(court){
+          .success(function(court){
             window.location.href = "/courts/" + court.id
-          });
+          })
+          .fail(function(errors){
+            window.location.href = "/courts/new"
+          })
+
         });
       });
 

@@ -31,6 +31,7 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl'
   gem 'valid_attribute'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 2.8.0', require: false
 end
 

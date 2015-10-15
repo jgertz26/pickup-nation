@@ -8,6 +8,8 @@ describe Court do
   it { should validate_presence_of(:city) }
   it { should validate_presence_of(:zip) }
   it { should validate_presence_of(:hoop_count) }
+  it { should validate_presence_of(:latitude) }
+  it { should validate_presence_of(:longitude) }
 
   it { should have_valid(:state).when("RI") }
   it { should_not have_valid(:state).when("ripa") }

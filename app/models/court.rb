@@ -5,8 +5,10 @@ class Court < ActiveRecord::Base
 
   paginates_per 8
 
-  validates :name, :hoop_count, :street_address, :city, :state, :zip, :setting,
+  validates :name, :hoop_count, :street_address, :city, :state,
+            :zip, :setting, :latitude, :longitude,
             presence: true
+
   validates :hoop_count, numericality: { only_integer: true, less_than: 30 }
 
   validates :state, inclusion: { in: ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT',

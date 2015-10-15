@@ -13,20 +13,27 @@ class CourtsController < ApplicationController
 
     page = params["page"]
     page ||= 1
-
     @user_coordinates = [user_location.latitude, user_location.longitude]
     @query_location = "#{user_location.city}, #{user_location.state_code}"
-    @courts = Court.near(@user_coordinates, @range).page(page)
-
-    @court_lats = []
-    @court_lons = []
-    @courts.each do |court|
-      @court_lats << court.latitude
-      @court_lons << court.longitude
+    
+    if Rails.env.test?
+      @courts = Court.all.page(page)
+    else
+      @courts = Court.near(@user_coordinates, @range).page(page)
     end
 
-    farthest_court_distance = @courts.last.distance_from(@user_coordinates)
-    @zoom = to_zoom(farthest_court_distance)
+    unless @courts.empty?
+
+      @court_lats = []
+      @court_lons = []
+      @courts.each do |court|
+        @court_lats << court.latitude
+        @court_lons << court.longitude
+      end
+
+      farthest_court_distance = @courts.last.distance_from(@user_coordinates)
+      @zoom = to_zoom(farthest_court_distance)
+    end
   end
 
   def show
@@ -55,19 +62,19 @@ class CourtsController < ApplicationController
     if @court.save
 
       respond_to do |format|
-        format.html do
+        format.json do
           flash[:success] = "Court added!"
-          redirect_to court_path(@court)
+          render json: @court
         end
-        format.json { render json: @court }
       end
 
     else
-      format.html do
-        flash[:alert] = @court.errors.full_messages.join(" - ")
-        render :new
+      respond_to do |format|
+        format.json do
+          flash[:alert] = @court.errors.full_messages.join(" - ")
+          render json: @court.errors.full_messages.join(" - ")
+        end
       end
-      format.json { render status: 500 }
     end
   end
 

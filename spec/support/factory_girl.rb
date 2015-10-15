@@ -11,10 +11,10 @@ FactoryGirl.define do
 
   factory :court do
     sequence(:name) {|n| "Dinkle Park Courts#{n}" }
-    sequence(:street_address) {|n| "#{n} Dinkleberry Drive" }
+    sequence(:street_address) {|n| "#{n} Beacon St" }
     city 'Boston'
     state 'MA'
-    zip '02215'
+    zip '02467'
     setting "Outdoor with lights"
     hoop_count 4
     latitude 40.11245
