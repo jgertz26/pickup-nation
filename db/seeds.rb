@@ -24,8 +24,8 @@ Court.create(
 )
 
 Court.create(
-  latitude: 42.341346,
-  longitude: -71.096435,
+  latitude: 42.351360,
+  longitude: -71.109710,
   name: "BU SAC Gym",
   street_address: "1 University Rd",
   city: "Boston",
@@ -49,8 +49,8 @@ Court.create(
 )
 
 Court.create(
-  latitude: 42.341346,
-  longitude: -71.096435,
+  latitude: 42.355062,
+  longitude: -71.137023,
   name: "Penniman Road Play Area",
   street_address: "99 Penniman Road",
   city: "Allston",
@@ -61,8 +61,8 @@ Court.create(
 )
 
 Court.create(
-  latitude: 42.341346,
-  longitude: -71.096435,
+  latitude: 42.336546,
+  longitude: -71.144377,
   name: "Jean B Waldstein Playground",
   street_address: "33 Clinton Path",
   city: "Brookline",
@@ -73,8 +73,8 @@ Court.create(
 )
 
 Court.create(
-  latitude: 42.341346,
-  longitude: -71.096435,
+  latitude: 42.331777,
+  longitude: -71.126309,
   name: "Cypress St. Playground",
   street_address: "22 Tappan St",
   city: "Brookline",
@@ -85,8 +85,8 @@ Court.create(
 )
 
 Court.create(
-  latitude: 42.341346,
-  longitude: -71.096435,
+  latitude: 42.332539,
+  longitude: -71.085743,
   name: "Madison Park",
   street_address: "60 Ruggles St",
   city: "Boston",
@@ -97,8 +97,8 @@ Court.create(
 )
 
 Court.create(
-  latitude: 42.341346,
-  longitude: -71.096435,
+  latitude: 42.333208,
+  longitude: -71.195716,
   name: "Newton Centre Playground",
   street_address: "50 Bowen St",
   city: "Newton",
@@ -109,8 +109,8 @@ Court.create(
 )
 
 Court.create(
-  latitude: 42.341346,
-  longitude: -71.096435,
+  latitude: 42.349546,
+  longitude: -71.058701,
   name: "Reggie Wong Memorial Playground",
   street_address: "151 Kneeland St",
   city: "Boston",
