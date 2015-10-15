@@ -20,9 +20,9 @@ $("#show-map-button").click(function( event ) {
 
   var fullAddress = streetAddress + " " + city + " " + state + " " + zip
 
-  $("form").hide()
-  $("#map-error").hide()
-  $("#map-and-button").show()
+  $("form").hide();
+  $("#map-error").hide();
+  $("#map-and-button").show();
 
   var geocoder = new google.maps.Geocoder();
 

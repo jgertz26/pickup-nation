@@ -15,7 +15,7 @@ class CourtsController < ApplicationController
     page ||= 1
     @user_coordinates = [user_location.latitude, user_location.longitude]
     @query_location = "#{user_location.city}, #{user_location.state_code}"
-    
+
     if Rails.env.test?
       @courts = Court.all.page(page)
     else
