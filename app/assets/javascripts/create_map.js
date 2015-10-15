@@ -40,8 +40,8 @@ $("#show-map-button").click(function( event ) {
       google.maps.event.addListener(map, 'click', function(event) {
         $("#map-buttons").show()
         placeMarker(event.latLng, map);
-        courtParams["latitude"] = event.latLng.lat();
-        courtParams["longitude"] = event.latLng.lng();
+        courtParams.latitude = event.latLng.lat();
+        courtParams.longitude = event.latLng.lng();
         var fullParams = { court: courtParams};
 
         $("#submit-court-button").click(function( event ) {
@@ -54,11 +54,11 @@ $("#show-map-button").click(function( event ) {
             data: fullParams
           })
           .success(function(court){
-            window.location.href = "/courts/" + court.id
+            window.location.href = "/courts/" + court.id;
           })
           .fail(function(){
-            window.location.href = "/courts/new"
-          })
+            window.location.href = "/courts/new";
+          });
 
         });
       });
