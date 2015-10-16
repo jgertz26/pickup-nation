@@ -39,7 +39,7 @@ Because somebody put some wrong information
     click_link "Edit Court"
 
     expect(page).to have_content("You need to log in to do that!")
-    expect(page).to have_content("Welcome to Pickup Nation")
+    expect(page).to have_content("Welcome to PickupNation")
 
   end
 
