@@ -34,7 +34,7 @@ Because someone built an apartment complex on it
     click_link "Delete Court"
 
     expect(page).to have_content("Court deleted!")
-    expect(page).to have_content("Welcome to PickupNation")
+    expect(page).to have_content("Welcome to Pickup Nation")
 
   end
 end

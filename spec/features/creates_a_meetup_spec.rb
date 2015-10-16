@@ -29,7 +29,7 @@ So others can join.
     fill_in "Description", with: "We gonna ball"
     click_button "Schedule Meetup"
 
-    expect(page).to have_content("Meetups today:")
+    expect(page).to have_content("Games today:")
     expect(page).to have_content("6:15 pm")
     expect(page).to have_content("We gonna ball")
     expect(page).to have_content("Number of Hoops")
@@ -55,7 +55,7 @@ So others can join.
     expect(page).to have_content("Later this week:")
     expect(page).to have_content("6:15 pm")
     expect(page).to have_content("Number of Hoops")
-    expect(page).to_not have_content("Meetups today:")
+    expect(page).to_not have_content("Games today:")
   end
 
   scenario "user is not signed in" do

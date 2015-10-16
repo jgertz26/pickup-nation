@@ -1,89 +1,6 @@
-$form-label-pointer: inherit;
-$form-label-font-size: 11pt;
-$form-label-line-height: 1.2;
-$form-label-font-color: #222222;
-
-$oil: #195a07;
-
-// Background color for the top bar
-// $topbar-bg-color: $oil;
-// $topbar-bg: $topbar-bg-color;
-
-// Height and margin
-// $topbar-height: rem-calc(45);
-// $topbar-margin-bottom: 0;
-
-// Controlling the styles for the title in the top bar
-// $topbar-title-weight: $font-weight-normal;
-// $topbar-title-font-size: rem-calc(17);
-
-// Set the link colors and styles for top-level nav
-// $topbar-link-color: $white;
-// $topbar-link-color-hover: $white;
-// $topbar-link-color-active: $white;
-// $topbar-link-color-active-hover: $white;
-// $topbar-link-weight: $font-weight-normal;
-// $topbar-link-font-size: rem-calc(13);
-// $topbar-link-hover-lightness: -10%;
-// $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-hover: lighten($oil, 10%);
-// $topbar-link-bg-color-hover: $charcoal;
-// $topbar-link-bg-active: $primary-color;
-// $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
-// $topbar-link-font-family: $body-font-family;
-// $topbar-link-text-transform: none;
-// $topbar-link-padding: ($topbar-height / 3);
-// $topbar-back-link-size: rem-calc(18);
-// $topbar-link-dropdown-padding: rem-calc(20);
-// $topbar-button-font-size: .75rem;
-// $topbar-button-top: 7px;
-
-// Style the top bar dropdown elements
-// $topbar-dropdown-bg: $oil;
-// $topbar-dropdown-link-color: $white;
-// $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
-// $topbar-dropdown-link-bg: $oil;
-$topbar-dropdown-link-bg-hover: lighten($oil, 10%);
-// $topbar-dropdown-link-weight: $font-weight-normal;
-// $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: $white;
-// $topbar-dropdown-toggle-alpha: .4;
-
-// $topbar-dropdown-label-color: $monsoon;
-// $topbar-dropdown-label-text-transform: uppercase;
-// $topbar-dropdown-label-font-weight: $font-weight-bold;
-// $topbar-dropdown-label-font-size: rem-calc(10);
-// $topbar-dropdown-label-bg: $oil;
-
-// Top menu icon styles
-// $topbar-menu-link-transform: uppercase;
-// $topbar-menu-link-font-size: rem-calc(13);
-// $topbar-menu-link-weight: $font-weight-bold;
-// $topbar-menu-link-color: $white;
-// $topbar-menu-icon-color: $white;
-// $topbar-menu-link-color-toggled: $jumbo;
-// $topbar-menu-icon-color-toggled: $jumbo;
-// $topbar-menu-icon-position: $opposite-direction; // Change to $default-float for a left menu icon
-
-// Transitions and breakpoint styles
-// $topbar-transition-speed: 300ms;
-// Using rem-calc for the below breakpoint causes issues with top bar
-// $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
-// $topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
-
-// Top-bar input styles
-// $topbar-input-height: rem-calc(28);
-
-// Divider Styles
-// $topbar-divider-border-bottom: solid 1px scale-color($topbar-bg-color, $lightness: 13%);
-// $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%);
-
-// Sticky Class
-// $topbar-sticky-class: ".sticky";
-// $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
-// $topbar-dropdown-arrows: true; //Set false to remove the \00bb >> text from dropdown subnavigation li//
 
 
+$celtics: #195a07;
 
 // Foundation by ZURB
 // foundation.zurb.com
@@ -175,6 +92,7 @@ $include-html-global-classes: $include-html-classes;
 
 // We use these to define default font stacks
 // $font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$font-family-sans-serif: 'Lato', sans-serif;
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
@@ -189,7 +107,7 @@ $include-html-global-classes: $include-html-classes;
 // $white-smoke : #F5F5F5;
 // $silver      : #EFEFEF;
 // $smoke       : #EEEEEE;
-// $gainsboro   : #DDDDDD;
+$gainsboro   : #DDDDDD;
 // $iron        : #CCCCCC;
 // $base        : #AAAAAA;
 // $aluminum    : #999999;
@@ -204,7 +122,7 @@ $include-html-global-classes: $include-html-classes;
 
 // We use these as default colors throughout
 // $primary-color: #008CBA;
-// $primary-color: #008CBA;
+$primary-color: #724bb9;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
@@ -214,6 +132,7 @@ $include-html-global-classes: $include-html-classes;
 // We use these to control various global styles
 // $body-bg: $white;
 // $body-font-color: $jet;
+$body-font-color: $gainsboro;
 // $body-font-family: $font-family-sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -302,6 +221,7 @@ $include-html-global-classes: $include-html-classes;
 // $header-font-weight: $font-weight-normal;
 // $header-font-style: normal;
 // $header-font-color: $jet;
+$header-font-color: $gainsboro;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
@@ -309,6 +229,7 @@ $include-html-global-classes: $include-html-classes;
 
 // We use these to control header font sizes
 // $h1-font-size: rem-calc(44);
+$h1-font-size: rem-calc(60);
 // $h2-font-size: rem-calc(37);
 // $h3-font-size: rem-calc(27);
 // $h4-font-size: rem-calc(23);
@@ -722,6 +643,12 @@ $include-html-global-classes: $include-html-classes;
 // $include-html-form-classes: $include-html-classes;
 
 // We use this to set the base for lots of form spacing and positioning styles
+
+$form-label-pointer: inherit;
+$form-label-font-size: 12pt;
+$form-label-line-height: 1.4;
+$form-label-font-color: $gainsboro;
+
 // $form-spacing: rem-calc(16);
 
 // We use these to style the labels in different ways
@@ -1482,13 +1409,12 @@ $include-html-global-classes: $include-html-classes;
 // $tooltip-pip-size: 5px;
 // $tooltip-max-width: 300px;
 
-// 34. Top Bar
+// 34. Topbar
 // - - - - - - - - - - - - - - - - - - - - - - - - -
-
-// $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
 // $topbar-bg-color: $oil;
+$topbar-bg-color: $celtics;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1497,6 +1423,7 @@ $include-html-global-classes: $include-html-classes;
 
 // Controlling the styles for the title in the top bar
 // $topbar-title-weight: $font-weight-normal;
+$topbar-title-weight: normal;
 // $topbar-title-font-size: rem-calc(17);
 
 // Set the link colors and styles for top-level nav
@@ -1506,9 +1433,9 @@ $include-html-global-classes: $include-html-classes;
 // $topbar-link-color-active-hover: $white;
 // $topbar-link-weight: $font-weight-normal;
 // $topbar-link-font-size: rem-calc(13);
-// $topbar-link-hover-lightness: -10%; // Darken by 10%
+// $topbar-link-hover-lightness: -10%;
 // $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-hover: $jet;
+$topbar-link-bg-hover: lighten($celtics, 10%);
 // $topbar-link-bg-color-hover: $charcoal;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
@@ -1522,10 +1449,12 @@ $include-html-global-classes: $include-html-classes;
 
 // Style the top bar dropdown elements
 // $topbar-dropdown-bg: $oil;
+$topbar-dropdown-bg: $celtics;
 // $topbar-dropdown-link-color: $white;
 // $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
 // $topbar-dropdown-link-bg: $oil;
-// $topbar-dropdown-link-bg-hover: $jet;
+$topbar-dropdown-link-bg: $celtics;
+$topbar-dropdown-link-bg-hover: lighten($celtics, 10%);
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $white;
@@ -1536,6 +1465,7 @@ $include-html-global-classes: $include-html-classes;
 // $topbar-dropdown-label-font-weight: $font-weight-bold;
 // $topbar-dropdown-label-font-size: rem-calc(10);
 // $topbar-dropdown-label-bg: $oil;
+$topbar-dropdown-label-bg: $celtics;
 
 // Top menu icon styles
 // $topbar-menu-link-transform: uppercase;
