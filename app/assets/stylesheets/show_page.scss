@@ -1,4 +1,24 @@
+$celtics: #195a07;
+
 .meetup-avatar {
   height: 50px;
   width: 50px;
+}
+
+#court-show-info {
+  padding: 15px;
+  width: 250px;
+  background-color: darken($celtics, 3);
+}
+
+#meetups-container {
+  padding: 20px;
+  text-align: left;
+}
+#edit-court {
+  text-align: center;
+}
+
+#schedule-game-button {
+  text-align: right;
 }

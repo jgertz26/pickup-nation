@@ -16,19 +16,19 @@
   <% end %>
 
   <% if current_user.creator?(meetup) || current_user.admin %>
-    - <%= link_to "Delete meetup",
+    - <%= link_to "Delete game",
         court_meetup_path(@court, meetup), method: :delete %>
   <% end %>
 
   <% attendee = Attendee.find_by(meetup: meetup, user: current_user) %>
   <% if attendee.nil? %>
-    <%= link_to "Join Meetup",
+    <%= link_to "Join Game",
         meetup_attendees_path(meetup),
         method: :post,
         class: "join-button button success tiny",
         id: "join-#{meetup.id}" %>
   <% else %>
-    <%= link_to "Leave Meetup",
+    <%= link_to "Leave Game",
         meetup_attendee_path(meetup, attendee),
         method: :delete,
         class: "join-button button alert tiny",
