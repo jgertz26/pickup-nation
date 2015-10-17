@@ -20,7 +20,7 @@
               <%= court.setting %><br>
               <%= court.distance_from(@user_coordinates).round(1) %> miles away
               <% if court.meetups_today? %>
-                <br><strong>Games happening today!</strong>
+                <br><b>Games happening today!</b>
               <% end %>
             </li>
           <% end %>

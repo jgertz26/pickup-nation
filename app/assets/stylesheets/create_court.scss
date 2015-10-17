@@ -1,0 +1,53 @@
+.court-name-field {
+  width: 260px;
+}
+
+.court-street-address-field {
+  width: 260px;
+}
+
+.court-city-field {
+  width: 180px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.court-state-field {
+  width: 50px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.court-zip-field {
+  width: 80px;
+  display: inline-block;
+}
+
+.court-setting-field {
+  width: 180px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.court-hoop-count-field {
+  width: 130px;
+  display: inline-block;
+}
+
+.court-hoop-count-input {
+  width: 40px;
+}
+
+.court-hours-input {
+  width: 180px;
+}
+
+#createMap {
+  height: 330px;
+  width: 100%;
+  min-width: 250px;
+}
+
+#map-and-button {
+  text-align: center;
+}

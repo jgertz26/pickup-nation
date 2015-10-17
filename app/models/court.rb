@@ -25,6 +25,10 @@ class Court < ActiveRecord::Base
     in: ['Outdoor without lights', 'Outdoor with lights', 'Indoor']
   }
 
+  validates_uniqueness_of :street_address,
+    scope: [:city, :state, :zip],
+    message: "is already in the system"
+
   validates :zip, length: { is: 5 }, numericality: { only_integer: true }
 
   def full_address

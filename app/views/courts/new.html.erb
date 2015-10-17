@@ -8,47 +8,70 @@
 
   <%= form_for @court do |f| %>
 
-    <%= f.label :name, "Name of court" %>
-    <%= f.text_field :name %>
+      <div class="court-name-field">
+        <%= f.label :name, "Name of court" %>
+        <%= f.text_field :name %>
+      </div>
 
-    <%= f.label :street_address %>
-    <%= f.text_field :street_address %>
+      <div class="court-street-address-field">
+        <%= f.label :street_address %>
+        <%= f.text_field :street_address %>
+      </div>
 
-    <%= f.label :city %>
-    <%= f.text_field :city %>
+      <div class="court-city-field">
+        <%= f.label :city %>
+        <%= f.text_field :city %>
+      </div>
 
-    <%= f.label :state %>
-    <%= f.text_field :state %>
+      <div class="court-state-field">
+        <%= f.label :state %>
+        <%= f.text_field :state %>
+      </div>
 
-    <%= f.label :zip, "Zip Code" %>
-    <%= f.text_field :zip %>
+      <div class="court-zip-field">
+        <%= f.label :zip, "Zip Code" %>
+        <%= f.text_field :zip %>
+      </div>
 
-    <%= f.label :hoop_count, "Number of hoops" %>
-    <%= f.text_field :hoop_count %>
+      <br>
 
-    <%= f.label :setting %>
-    <%= f.select(:setting,
-        ['Outdoor without lights', 'Outdoor with lights', 'Indoor']) %>
+      <div class="court-setting-field">
+        <%= f.label :setting %>
+        <%= f.select(:setting,
+            ['Outdoor without lights', 'Outdoor with lights', 'Indoor']) %>
+      </div>
 
-    <%= f.label :hours,
-    "Hours of Operation (if outdoor, include when lights go out)" %>
-    <%= f.text_field :hours, placeholder: "Optional" %>
+      <div class="court-hoop-count-field">
+        <%= f.label :hoop_count, "Number of hoops" %>
+        <div class="court-hoop-count-input">
+          <%= f.text_field :hoop_count %>
+        </div>
+      </div>
 
-    <%= f.submit "Add Court", id: "show-map-button", class: "button radius" %>
+      <div class="court-hours-field">
+        <%= f.label :hours,
+        "Hours of Operation (if outdoor, include when lights go out)" %>
+        <div class="court-hours-input">
+          <%= f.text_field :hours, placeholder: "Optional" %>
+        </div>
+      </div>
+
+
+      <%= f.submit "Add Court", id: "show-map-button", class: "button radius" %>
 
   <% end %>
 
-  <div id="map-and-button" class="" hidden>
+  <div id="map-and-button" hidden>
     <br>
     <h5>Click on the map to pinpoint the court's exact location!</h5>
     <br>
-    <div id="createMap" style="width:300px;height:300px;"></div>
+    <div id="createMap"></div>
     <br>
 
     <div id="map-buttons" hidden>
       <%= link_to "Submit", "#",
           id: "submit-court-button",
-          class: "button success tiny"%>
+          class: "button success radius"%>
     </div>
 
   </div>
