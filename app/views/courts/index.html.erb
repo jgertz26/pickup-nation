@@ -1,36 +1,45 @@
-<div id="page-content" class="small-11 small-centered columns">
+<div class="page-content small-11 small-centered columns">
   <h1>Discover Courts</h1>
 
   <%= render "layouts/search" %>
 
-  <% unless @courts.empty? %>
-    <div id="indexMap" style="width:300px;height:200px;"
-      data-user=<%=@user_coordinates.join(',')%>
-      data-lats=<%=@court_lats.join(',')%>
-      data-lons=<%=@court_lons.join(',')%>
-      data-zoom=<%=@zoom%>
-      data-startnum=<%=@start_num%> >
-    </div>
-  <% end %>
+  <div class="row index-container">
 
-  <ol class="courts-container">
-    <% if @courts.empty? %>
-      <h5>
-        No courts marked near that area.
-        <%= link_to "Click here to add one.", new_court_path %>
-      </h5>
-    <% else %>
-      <% @courts.each do |court| %>
-        <div class="list-court">
-          <li>
-            <%= link_to court.name, court_path(court) %><br>
-            <%= court.full_address %><br>
-            <%= court.distance_from(@user_coordinates).round(1) %> miles away
-          </li>
+    <div class="medium-7 columns">
+      <ol class="courts-container">
+        <% if @courts.empty? %>
+          <h5>
+            No courts marked near that area.
+            <%= link_to "Click here to add one.", new_court_path %>
+          </h5>
+        <% else %>
+          <% @courts.each do |court| %>
+            <li class="listed-court">
+              <%= link_to court.name, court_path(court) %><br>
+              <%= court.full_address %><br>
+              <%= court.setting %><br>
+              <%= court.distance_from(@user_coordinates).round(1) %> miles away
+              <% if court.meetups_today? %>
+                <br><strong>Games happening today!</strong>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ol>
+    </div>
+
+    <% unless @courts.empty? %>
+      <div class="index-map-container medium-4 columns left">
+        <div id="indexMap"
+          data-user=<%=@user_coordinates.join(',')%>
+          data-lats=<%=@court_lats.join(',')%>
+          data-lons=<%=@court_lons.join(',')%>
+          data-zoom=<%=@zoom%> >
         </div>
-      <% end %>
+      </div>
     <% end %>
-  </ol>
+
+  </div>
 
   <div class="page-links">
     <%= paginate @courts %>

@@ -1,5 +1,10 @@
 $oil: #333333;
 $gainsboro: #DDDDDD;
+$celtics: #195a07;
+
+strong {
+  color: lighten($celtics, 15%)
+}
 
 #background {
   background: url("http://www.onefivesports.com/wp-content/uploads/2012/06/basket_ball_court1.png")
@@ -11,7 +16,7 @@ $gainsboro: #DDDDDD;
   min-height: 100%
 }
 
-#page-content {
+.page-content {
   margin-top: 20px;
   padding: 30px 20px;
   background-color: rgba(55, 55, 55, 0.92);
