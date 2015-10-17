@@ -1,23 +1,22 @@
 $celtics: #195a07;
 
 .meetup-avatar {
-  height: 100%;
-  width: 100%;
   max-height: 60px;
   max-width: 60px;
-
-  min-width: 40px;
   min-height: 40px;
+  min-width: 40px;
   transform: translateY(15%);
+  height: 100%;
+  width: 100%;
 }
 
 .show-info-left {
   max-width: 320px;
 }
 #court-show-info {
+  background-color: darken($celtics, 3);
   padding: 15px;
   width: 100%;
-  background-color: darken($celtics, 3);
 }
 
 #meetups-container {
