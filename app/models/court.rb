@@ -25,9 +25,24 @@ class Court < ActiveRecord::Base
     in: ['Outdoor without lights', 'Outdoor with lights', 'Indoor']
   }
 
+  validates_uniqueness_of :street_address,
+    scope: [:city, :state, :zip],
+    message: "is already in the system"
+
   validates :zip, length: { is: 5 }, numericality: { only_integer: true }
 
   def full_address
     "#{street_address} #{city}, #{state} #{zip}"
   end
+
+  def meetups_today?
+    meetups.each do |meetup|
+      meetup_date = meetup.start_time.to_date
+      if meetup_date == Date.today
+        return true
+      end
+    end
+    false
+  end
+
 end

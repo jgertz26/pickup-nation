@@ -35,4 +35,9 @@ function initializeIndexMap(center, lats, lons, zoom){
 
     markers[i].setMap(map);
   }
+
+  $(window).resize(function() {
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
+  });
 }

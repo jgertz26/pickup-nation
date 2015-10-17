@@ -9,6 +9,7 @@
 
     <section class="top-bar-section">
       <ul class="right">
+        <li><%= link_to "Discover", "#", id:"discover-nav-button" %></li>
         <li><%= link_to "Add New Court", new_court_path %></li>
         <li class="has-dropdown">
           <%- if current_user -%>

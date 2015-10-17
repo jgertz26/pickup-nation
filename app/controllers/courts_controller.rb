@@ -129,7 +129,9 @@ class CourtsController < ApplicationController
   end
 
   def to_zoom(distance)
-    if distance < 5
+    if distance < 1
+      13
+    elsif distance < 5
       11
     elsif distance < 15
       10

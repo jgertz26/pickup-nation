@@ -20,9 +20,9 @@ $("#show-map-button").click(function( event ) {
 
   var fullAddress = streetAddress + " " + city + " " + state + " " + zip;
 
-  $("form").hide();
+  $("form").slideToggle( "slow" );
   $("#map-error").hide();
-  $("#map-and-button").show();
+  $("#map-and-button").slideToggle( "slow" );
 
   var geocoder = new google.maps.Geocoder();
 
@@ -35,7 +35,13 @@ $("#show-map-button").click(function( event ) {
 
   geocoder.geocode({'address': fullAddress}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
-      map.setCenter(results[0].geometry.location);
+      var resultCenter = results[0].geometry.location
+      map.setCenter(resultCenter);
+
+      $(window).resize(function() {
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(resultCenter);
+      });
 
       google.maps.event.addListener(map, 'click', function(event) {
         $("#map-buttons").show();
@@ -65,8 +71,8 @@ $("#show-map-button").click(function( event ) {
 
     } else {
 
-        $("#map-and-button").hide();
-        $("form").show();
+        $("#map-and-button").slideToggle( "slow" );
+        $("form").slideToggle( "slow" );
 
         if (status == "ZERO_RESULTS") {
 

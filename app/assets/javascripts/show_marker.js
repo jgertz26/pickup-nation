@@ -28,7 +28,6 @@ function initializeShowMap(location){
   marker.setMap(map);
 
   $(window).resize(function() {
-    // (the 'map' here is the result of the created 'var map = ...' above)
     google.maps.event.trigger(map, "resize");
     map.setCenter(location);
   });
