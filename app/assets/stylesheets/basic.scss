@@ -3,7 +3,7 @@ $gainsboro: #DDDDDD;
 $celtics: #195a07;
 
 b {
-  color: lighten($celtics, 15%)
+  color: lighten($celtics, 15%);
 }
 
 #background {
@@ -13,7 +13,7 @@ b {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 100%
+  min-height: 100%;
 }
 
 .page-content {
