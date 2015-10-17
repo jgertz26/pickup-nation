@@ -1,59 +1,39 @@
 <div id="page-content" class="small-11 small-centered columns">
   <h1><%= @court.name %></h1>
 
-  <div id="address-info">
-    <h5>Address:</h5>
-    <%= @court.street_address %><br>
-    <%= @court.city %>, <%= @court.state %> <%= @court.zip %>
-  </div>
+  <div class="row">
 
-  <div id="showMap" style="width:300px;height:200px;"
-    data-lat=<%= @court.latitude %>
-    data-lon=<%= @court.longitude %> >
-  </div>
+    <div class="show-info-left small-12 small-centered medium-4 medium-uncentered columns">
+      <div id="showMap"
+        data-lat=<%= @court.latitude %>
+        data-lon=<%= @court.longitude %> >
+      </div>
 
-  <div class="other-info">
-    Setting: <%= @court.setting %><br>
-    Number of Hoops: <%= @court.hoop_count %><br>
-    <%= "Hours: #{@court.hours}" unless @court.hours == "" %><br>
-  </div>
-
-  <br>
-  <%= link_to "Edit Court", edit_court_path(@court) %>
-
-  <%= link_to "Schedule a Meetup", new_court_meetup_path(@court) %>
+      <div id="court-show-info">
+        <h5>Address:</h5>
+        <%= @court.street_address %><br>
+        <%= @court.city %>, <%= @court.state %> <%= @court.zip %>
+        <br><br>
+        <h5>Court Info:</h5>
+        Setting: <%= @court.setting %><br>
+        Number of Hoops: <%= @court.hoop_count %><br>
+        <%= "Hours: #{@court.hours}" unless @court.hours == "" %><br>
 
 
-  <% unless @meetups_today.empty? %>
-    <div class="meetups-today">
-      <h5>Meetups today:</h5>
-      <ul>
-        <% @meetups_today.each do |meetup| %>
-          <li>
-            <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
-            <%= "#{meetup.user.username} -
-              #{meetup.start_time.strftime('%l:%M %P')}" %>
-            <%= render "meetup_details", meetup: meetup %>
-          </li>
-        <% end %>
-      </ul>
+      <br>
+
+        <div id="edit-court">
+          <%= link_to "Edit Court",
+              edit_court_path(@court),
+              class: "button alert radius tiny" %>
+        </div>
+
+      </div>
     </div>
-  <% end %>
 
-  <% unless @meetups_this_week.empty? %>
-    <div class="meetups-week">
-      <h5>Later this week:</h5>
-      <ul>
-        <% @meetups_this_week.each do |meetup| %>
-          <li>
-            <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
-            <%= "#{meetup.user.username} -
-              #{meetup.start_time.strftime('%a. %m/%d, %l:%M %P')}" %>
-              <%= render "meetup_details", meetup: meetup %>
-          </li>
-        <% end %>
-      </ul>
+    <div id="meetups-container" class="small-12 medium-8 columns">
+      <%= render "meetups_container" %>
     </div>
-  <% end %>
 
+  </div>
 </div>

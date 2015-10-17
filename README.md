@@ -1,4 +1,4 @@
-#PickupNation
+#Pickup Nation
 
 [ ![Codeship Status for jgertz26/pickup-nation](https://codeship.com/projects/1aae0fe0-4e6b-0133-1c3e-5a2039af3b63/status?branch=master)](https://codeship.com/projects/106907)
 [![Code Climate](https://codeclimate.com/github/jgertz26/pickup-nation/badges/gpa.svg)](https://codeclimate.com/github/jgertz26/pickup-nation)

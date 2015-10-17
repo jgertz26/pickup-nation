@@ -11,7 +11,7 @@ class MeetupsController < ApplicationController
     @meetup = Meetup.new(meetup_create_params)
 
     if @meetup.save
-      flash[:sucess] = "Meetup scheduled!"
+      flash[:sucess] = "Game scheduled!"
       redirect_to court_path(@court)
     else
       flash[:alert] = @meetup.errors.full_messages.join(" - ")
@@ -29,7 +29,7 @@ class MeetupsController < ApplicationController
     @court = @meetup.court
 
     if @meetup.update(meetup_update_params)
-      flash[:sucess] = "Meetup updated!"
+      flash[:sucess] = "Game updated!"
       redirect_to court_path(@court)
     else
       flash[:alert] = @meetup.errors.full_messages.join(" - ")
@@ -41,7 +41,7 @@ class MeetupsController < ApplicationController
     @meetup = Meetup.find(params["id"])
     @court = @meetup.court
     @meetup.destroy
-    flash[:success] = "Meetup successfully deleted"
+    flash[:success] = "Game successfully deleted"
     redirect_to court_path(@court)
   end
 

@@ -50,7 +50,7 @@ So I can schedule games there
     click_link "Add New Court"
 
     expect(page).to have_content("You need to log in to do that!")
-    expect(page).to have_content("Welcome to PickupNation")
+    expect(page).to have_content("Welcome to Pickup Nation")
 
   end
 

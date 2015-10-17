@@ -1,6 +1,6 @@
 <div id="page-content" class="small-11 small-centered columns">
 
-  <h2>Schedule a meetup at <%= @court.name %></h2>
+  <h2>Schedule a game at <%= @court.name %></h2>
   <%= form_for [@court, @meetup] do |f| %>
 
     <%= f.label :start_time %>
@@ -10,14 +10,13 @@
                           end_year: (Time.now.year + 1),
                           start_hour: 6,
                           end_hour: 22,
-                          default: Time.now },
-                          { class: "isetglvjr"}
+                          default: Time.now }
                           %>
 
     <%= f.label :description %>
     <%= f.text_area :description %>
 
-    <%= f.submit ("Schedule Meetup")%>
+    <%= f.submit ("Schedule Game")%>
   <% end %>
 
 </div>

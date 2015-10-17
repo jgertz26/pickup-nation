@@ -1,4 +1,54 @@
+$celtics: #195a07;
+
 .meetup-avatar {
-  height: 50px;
-  width: 50px;
+  max-height: 60px;
+  max-width: 60px;
+  min-height: 40px;
+  min-width: 40px;
+  transform: translateY(15%);
+  height: 100%;
+  width: 100%;
+}
+
+.show-info-left {
+  max-width: 320px;
+}
+#court-show-info {
+  background-color: darken($celtics, 3);
+  padding: 15px;
+  width: 100%;
+}
+
+#meetups-container {
+  padding: 20px;
+  text-align: left;
+}
+
+#edit-court {
+  text-align: center;
+}
+
+#schedule-game-button {
+  text-align: center;
+}
+
+#showMap {
+  height: 300px;
+  width: 100%;
+}
+
+#meetups-container ul {
+  list-style-type: none;
+}
+
+#join-buttons {
+  text-align: center;
+}
+
+.join-button {
+  margin-top: 10px;
+}
+
+.meetup-details {
+  padding-bottom: 15px;
 }

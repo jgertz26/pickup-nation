@@ -20,21 +20,21 @@ So others can join.
     sign_in(user)
     visit court_path(court)
 
-    click_link "Schedule a Meetup"
-    expect(page).to have_content("Schedule a meetup at #{court.name}")
+    click_link "Schedule a Game"
+    expect(page).to have_content("Schedule a game at #{court.name}")
 
     select('06 PM', from: 'meetup_start_time_4i')
     select('15', from: "meetup_start_time_5i")
 
     fill_in "Description", with: "We gonna ball"
-    click_button "Schedule Meetup"
+    click_button "Schedule Game"
 
-    expect(page).to have_content("Meetups today:")
+    expect(page).to have_content("Games today:")
     expect(page).to have_content("6:15 pm")
     expect(page).to have_content("We gonna ball")
     expect(page).to have_content("Number of Hoops")
     expect(page).to have_content("Total attendees: 1")
-    expect(page).to have_link("Leave Meetup")
+    expect(page).to have_link("Leave Game")
     expect(page).to_not have_content("Later this week:")
   end
 
@@ -43,24 +43,24 @@ So others can join.
     sign_in(user)
     visit court_path(court)
 
-    click_link "Schedule a Meetup"
-    expect(page).to have_content("Schedule a meetup at #{court.name}")
+    click_link "Schedule a Game"
+    expect(page).to have_content("Schedule a game at #{court.name}")
 
     select((Date.today + 1).day, from: 'meetup_start_time_3i')
     select('06 PM', from: 'meetup_start_time_4i')
     select('15', from: "meetup_start_time_5i")
 
-    click_button "Schedule Meetup"
+    click_button "Schedule Game"
 
     expect(page).to have_content("Later this week:")
     expect(page).to have_content("6:15 pm")
     expect(page).to have_content("Number of Hoops")
-    expect(page).to_not have_content("Meetups today:")
+    expect(page).to_not have_content("Games today:")
   end
 
   scenario "user is not signed in" do
     visit court_path(court)
-    click_link "Schedule a Meetup"
+    click_link "Schedule a Game"
     expect(page).to have_content("You need to log in to do that!")
   end
 end
