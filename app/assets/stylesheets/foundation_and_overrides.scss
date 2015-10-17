@@ -126,6 +126,7 @@ $primary-color: #724bb9;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
+$info-color: #3098c5;
 
 // We use these to control various global styles
 // $body-bg: $white;
@@ -278,6 +279,7 @@ $h1-font-size: rem-calc(60);
 // $anchor-text-decoration: none;
 // $anchor-text-decoration-hover: none;
 // $anchor-font-color: $primary-color;
+$anchor-font-color: lighten($primary-color, 7%);
 // $anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%);
 
 // We use these to style the <hr> element

@@ -24,9 +24,9 @@ Because I changed my mind.
     sign_in(user)
     visit court_path(court)
 
-    click_link "Delete meetup"
+    click_link "Delete game"
 
-    expect(page).to have_content("Meetup successfully deleted")
+    expect(page).to have_content("Game successfully deleted")
     expect(page).to have_content("Number of Hoops")
   end
 
@@ -35,9 +35,9 @@ Because I changed my mind.
     sign_in(admin)
     visit court_path(court)
 
-    click_link "Delete meetup"
+    click_link "Delete game"
 
-    expect(page).to have_content("Meetup successfully deleted")
+    expect(page).to have_content("Game successfully deleted")
     expect(page).to have_content("Number of Hoops")
   end
 end

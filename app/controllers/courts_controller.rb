@@ -51,6 +51,9 @@ class CourtsController < ApplicationController
         @meetups_this_week << meetup
       end
     end
+
+    @meetups_today.sort_by! { |m| m.start_time }
+    @meetups_this_week.sort_by! { |m| m.start_time }
   end
 
   def new

@@ -3,8 +3,8 @@
 
   <div class="row">
 
-    <div class="show-info-left small-12 medium-4 columns">
-      <div id="showMap" style="width:250px;height:300px;"
+    <div class="show-info-left small-12 small-centered medium-4 medium-uncentered columns">
+      <div id="showMap"
         data-lat=<%= @court.latitude %>
         data-lon=<%= @court.longitude %> >
       </div>
@@ -31,45 +31,8 @@
       </div>
     </div>
 
-    <div id="meetups-container" class="small-12 medium-8 columns ">
-
-      <div id="schedule-game-button">
-        <%= link_to "Schedule a Game",
-            new_court_meetup_path(@court),
-            class: "button radius" %>
-      </div>
-
-      <% unless @meetups_today.empty? %>
-        <div class="meetups-today">
-          <h5>Games today:</h5>
-          <ul>
-            <% @meetups_today.each do |meetup| %>
-              <li>
-                <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
-                <%= "#{meetup.user.username} -
-                  #{meetup.start_time.strftime('%l:%M %P')}" %>
-                <%= render "meetup_details", meetup: meetup %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <% unless @meetups_this_week.empty? %>
-        <div class="meetups-week">
-          <h5>Later this week:</h5>
-          <ul>
-            <% @meetups_this_week.each do |meetup| %>
-              <li>
-                <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
-                <%= "#{meetup.user.username} -
-                  #{meetup.start_time.strftime('%a. %m/%d, %l:%M %P')}" %>
-                  <%= render "meetup_details", meetup: meetup %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+    <div id="meetups-container" class="small-12 medium-8 columns">
+      <%= render "meetups_container" %>
     </div>
 
   </div>

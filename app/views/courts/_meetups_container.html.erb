@@ -1,0 +1,61 @@
+<div id="schedule-game-button" >
+  <%= link_to "Schedule a Game",
+      new_court_meetup_path(@court),
+      class: "button round expanded" %>
+</div>
+
+<% if @meetups_today.empty? && @meetups_this_week.empty? %>
+  <h5>No games scheduled for this week</h5>
+<% end %>
+
+<% unless @meetups_today.empty? %>
+  <h5>Games today:</h5>
+  <ul>
+    <% @meetups_today.each do |meetup| %>
+      <li>
+        <div class="row meetup-details">
+          <div class="small-2 medium-2 columns">
+            <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
+          </div>
+
+          <div class="small-10 medium-7 columns left">
+            <%= "#{meetup.user.username} -
+              #{meetup.start_time.strftime('%l:%M %P')}" %>
+            <%= render "meetup_details", meetup: meetup %>
+          </div>
+
+          <div id="join-buttons" class="small-12 small-centered medium-3 medium-uncentered columns">
+            <%= render "join_buttons", meetup: meetup %>
+          </div>
+
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% unless @meetups_this_week.empty? %>
+  <h5>Later this week:</h5>
+  <ul>
+    <% @meetups_this_week.each do |meetup| %>
+      <li>
+        <div class="row meetup-details">
+          <div class="small-2 medium-2 columns">
+            <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
+          </div>
+
+          <div class="small-10 medium-7 columns left">
+            <%= "#{meetup.user.username} -
+              #{meetup.start_time.strftime('%a. %m/%d, %l:%M %P')}" %>
+            <%= render "meetup_details", meetup: meetup %>
+          </div>
+
+          <div id="join-buttons" class="small-12 small-centered medium-3 medium-uncentered columns">
+            <%= render "join_buttons", meetup: meetup %>
+          </div>
+
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

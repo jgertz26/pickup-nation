@@ -24,11 +24,11 @@ So that others can know I'm coming.
 
     expect(page).to have_content("Total attendees: 1")
 
-    click_link "Join Meetup"
+    click_link "Join Game"
 
-    expect(page).to have_content("Successfully joined meetup")
-    expect(page).to have_link("Leave Meetup")
-    expect(page).to_not have_link("Join Meetup")
+    expect(page).to have_content("Successfully joined game")
+    expect(page).to have_link("Leave Game")
+    expect(page).to_not have_link("Join Game")
     expect(page).to have_content("Total attendees: 2")
   end
 
@@ -41,17 +41,17 @@ So that others can know I'm coming.
 
     expect(page).to have_content("Total attendees: 2")
 
-    click_link "Leave Meetup"
+    click_link "Leave Game"
 
-    expect(page).to have_content("Successfully left meetup")
-    expect(page).to have_link("Join Meetup")
-    expect(page).to_not have_link("Leave Meetup")
+    expect(page).to have_content("Successfully left game")
+    expect(page).to have_link("Join Game")
+    expect(page).to_not have_link("Leave Game")
     expect(page).to have_content("Total attendees: 1")
   end
 
   scenario "user is not signed in" do
     visit court_path(court)
-    expect(page).to_not have_link("Join Meetup")
-    expect(page).to_not have_link("Join Meetup")
+    expect(page).to_not have_link("Join Game")
+    expect(page).to_not have_link("Leave Game")
   end
 end

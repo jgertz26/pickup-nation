@@ -25,7 +25,7 @@ To let users know the conditions of the court.
     visit court_path(court)
 
     expect(page).to_not have_link("Provide Update")
-    expect(page).to_not have_link("Delete Meetup")
+    expect(page).to_not have_link("Delete Game")
   end
 
   scenario "user updates meetup" do
@@ -36,8 +36,8 @@ To let users know the conditions of the court.
     click_link "Provide update"
 
     fill_in "Updates", with: "People showed up!"
-    click_button "Update Meetup"
-    expect(page).to have_content("Meetup updated!")
+    click_button "Update Game"
+    expect(page).to have_content("Game updated!")
     expect(page).to have_content("Number of Hoops")
     expect(page).to have_content("People showed up")
     expect(page).to have_content("- less than a minute ago")
