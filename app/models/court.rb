@@ -35,14 +35,25 @@ class Court < ActiveRecord::Base
     "#{street_address} #{city}, #{state} #{zip}"
   end
 
-  def meetups_today?
+  def meetups_today
+    results = []
     meetups.each do |meetup|
       meetup_date = meetup.start_time.to_date
       if meetup_date == Date.today
-        return true
+        results << meetup
       end
     end
-    false
+    results.sort_by! { |m| m.start_time }
   end
 
+  def meetups_this_week
+    results = []
+    meetups.each do |meetup|
+      meetup_date = meetup.start_time.to_date
+      if meetup_date > Date.today && meetup_date < (Date.today + 7.days)
+        results << meetup
+      end
+    end
+    results.sort_by! { |m| m.start_time }
+  end
 end

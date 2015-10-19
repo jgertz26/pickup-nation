@@ -14,7 +14,7 @@ class CourtsController < ApplicationController
     page = params["page"]
     page ||= 1
     @user_coordinates = [user_location.latitude, user_location.longitude]
-    @query_location = "#{user_location.city}, #{user_location.state_code}"
+    @query_location = "#{user_location.city} #{user_location.state_code}"
 
     if Rails.env.test?
       @courts = Court.all.page(page)
@@ -23,37 +23,17 @@ class CourtsController < ApplicationController
     end
 
     unless @courts.empty?
-
-      @court_lats = []
-      @court_lons = []
-      @courts.each do |court|
-        @court_lats << court.latitude
-        @court_lons << court.longitude
-      end
-
-      farthest_court_distance = @courts.last.distance_from(@user_coordinates)
-      @zoom = to_zoom(farthest_court_distance)
+      @court_lats = @courts.map { |c| c.latitude }
+      @court_lons = @courts.map { |c| c.longitude }
+      @zoom = to_zoom(@courts.last, @user_coordinates)
     end
   end
 
   def show
     @court = Court.find(params["id"])
     meetups = @court.meetups
-    @meetups_today = []
-    @meetups_this_week = []
-    today = Date.today
-
-    meetups.each do |meetup|
-      meetup_date = meetup.start_time.to_date
-      if meetup_date == today
-        @meetups_today << meetup
-      elsif meetup_date > today && meetup_date < (today + 7.days)
-        @meetups_this_week << meetup
-      end
-    end
-
-    @meetups_today.sort_by! { |m| m.start_time }
-    @meetups_this_week.sort_by! { |m| m.start_time }
+    @meetups_today = @court.meetups_today
+    @meetups_this_week = @court.meetups_this_week
   end
 
   def new
@@ -128,7 +108,8 @@ class CourtsController < ApplicationController
     end
   end
 
-  def to_zoom(distance)
+  def to_zoom(court, user_coordinates)
+    distance = court.distance_from(user_coordinates)
     if distance < 1
       13
     elsif distance < 5
