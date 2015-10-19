@@ -12,7 +12,7 @@
       <div id="court-show-info">
         <h5>Address:</h5>
         <%= @court.street_address %><br>
-        <%= @court.city %>, <%= @court.state %> <%= @court.zip %>
+        <%= "#{@court.city}, #{@court.state} #{@court.zip}" %>
         <br><br>
         <h5>Court Info:</h5>
         Setting: <%= @court.setting %><br>

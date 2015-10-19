@@ -35,8 +35,48 @@ describe Court, "#full_address" do
       state: "MA",
       zip: "02111"
     )
-
     expect(court.full_address).to eq("33 Harrison Ave Boston, MA 02111")
   end
+end
 
+describe Court, "#meetups_today" do
+  it "returns an array of meetups occurring today in order by time" do
+    court = FactoryGirl.create(:court)
+    meetup_1 = FactoryGirl.create(
+      :meetup,
+      court: court,
+      start_time: Time.now + 1000
+    )
+    meetup_2 = FactoryGirl.create(
+      :meetup,
+      court: court
+    )
+    meetup_3 = FactoryGirl.create(
+      :meetup,
+      court: court,
+      start_time: Time.now + 300000
+    )
+    expect(court.meetups_today).to eq([meetup_2, meetup_1])
+  end
+end
+
+describe Court, "#meetups_this week" do
+  it "returns an array of meetups occurring this week but not today in order" do
+    court = FactoryGirl.create(:court)
+    meetup_1 = FactoryGirl.create(
+      :meetup,
+      court: court
+    )
+    meetup_2 = FactoryGirl.create(
+      :meetup,
+      court: court,
+      start_time: Time.now + 300000
+    )
+    meetup_3 = FactoryGirl.create(
+      :meetup,
+      court: court,
+      start_time: Time.now + 100000
+    )
+    expect(court.meetups_this_week).to eq([meetup_3, meetup_2])
+  end
 end
