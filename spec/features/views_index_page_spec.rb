@@ -14,7 +14,7 @@ So that I can find one near me that suits my needs.
   scenario "user views all courts with games happening" do
     court_1 = FactoryGirl.create(:court)
     court_2 = FactoryGirl.create(:court)
-    meetup = FactoryGirl.create(:meetup, court: court_2)
+    FactoryGirl.create(:meetup, court: court_2)
 
     visit courts_path
     expect(page).to have_content(court_1.name)

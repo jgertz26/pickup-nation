@@ -51,7 +51,7 @@ describe Court, "#meetups_today" do
       :meetup,
       court: court
     )
-    meetup_3 = FactoryGirl.create(
+    FactoryGirl.create(
       :meetup,
       court: court,
       start_time: Time.now + 300000
@@ -63,7 +63,7 @@ end
 describe Court, "#meetups_this week" do
   it "returns an array of meetups occurring this week but not today in order" do
     court = FactoryGirl.create(:court)
-    meetup_1 = FactoryGirl.create(
+    FactoryGirl.create(
       :meetup,
       court: court
     )
