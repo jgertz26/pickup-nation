@@ -1,16 +1,17 @@
 <% unless meetup.description == "" || meetup.description.nil? %>
   <br>Details: <%= meetup.description %>
 <% end %>
+  <div id=<%= "attendee-info-#{meetup.id}" %> >
+    Total attendees: <%= meetup.attendees.length %>
+  </div>
 
-  <br> Total attendees: <%= meetup.attendees.length %>
 <% unless meetup.condition.nil? %>
-  <br>Updates: <%= meetup.condition %>
-  <em> - <%= time_ago_in_words(meetup.updated_at) %> ago</em>
+  Updates: <%= meetup.condition %>
+  <em> - <%= time_ago_in_words(meetup.updated_at) %> ago</em><br>
 <% end %>
 
 <% if current_user %>
   <% if current_user.creator?(meetup) %>
-    <br>
     <%= link_to "Provide update",
         edit_court_meetup_path(@court, meetup) %>
   <% end %>

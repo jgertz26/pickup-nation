@@ -16,7 +16,7 @@ So that others can know I'm coming.
   let(:user_1) { FactoryGirl.create(:user) }
   let(:user_2) { FactoryGirl.create(:user) }
 
-  scenario "user successfully joins a meetup" do
+  scenario "user successfully joins a meetup", js: true do
     FactoryGirl.create(:meetup, court: court, user: user_1)
 
     sign_in(user_2)
@@ -32,7 +32,7 @@ So that others can know I'm coming.
     expect(page).to have_content("Total attendees: 2")
   end
 
-  scenario "user successfully leaves meetup" do
+  scenario "user successfully leaves meetup", js: true do
     meetup = FactoryGirl.create(:meetup, court: court, user: user_1)
     Attendee.create(meetup: meetup, user: user_2)
 

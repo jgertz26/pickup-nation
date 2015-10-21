@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :meetups, only: :index do
-    resources :attendees, only: [:create, :destroy]
+    resources :attendees, only: :create
   end
 end
