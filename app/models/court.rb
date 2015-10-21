@@ -39,7 +39,7 @@ class Court < ActiveRecord::Base
     results = []
     meetups.each do |meetup|
       meetup_date = meetup.start_time.to_date
-      if meetup_date == Time.now.getlocal.to_date
+      if meetup_date == Date.today
         results << meetup
       end
     end
@@ -48,7 +48,7 @@ class Court < ActiveRecord::Base
 
   def meetups_this_week
     results = []
-    today = Time.now.getlocal.to_date
+    today = Date.today
     meetups.each do |meetup|
       meetup_date = meetup.start_time.to_date
       if meetup_date > today && meetup_date < (today + 7.days)

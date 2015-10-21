@@ -49,12 +49,12 @@ describe Court, "#meetups_today" do
     meetup_2 = FactoryGirl.create(
       :meetup,
       court: court,
-      start_time: (Time.now.getlocal - 6.hours)
+      start_time: (Time.now - 6.hours)
     )
     FactoryGirl.create(
       :meetup,
       court: court,
-      start_time: (Time.now.getlocal - 4.hours + 9.days)
+      start_time: (Time.now - 4.hours + 9.days)
     )
     expect(court.meetups_today).to eq([meetup_2, meetup_1])
   end
@@ -70,12 +70,12 @@ describe Court, "#meetups_this week" do
     meetup_2 = FactoryGirl.create(
       :meetup,
       court: court,
-      start_time: (Time.now.getlocal - 4.hours + 3.days)
+      start_time: (Time.now - 4.hours + 3.days)
     )
     meetup_3 = FactoryGirl.create(
       :meetup,
       court: court,
-      start_time: (Time.now.getlocal - 4.hours + 2.days)
+      start_time: (Time.now - 4.hours + 2.days)
     )
     expect(court.meetups_this_week).to eq([meetup_3, meetup_2])
   end

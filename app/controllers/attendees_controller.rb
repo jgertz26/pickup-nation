@@ -1,6 +1,6 @@
 class AttendeesController < ApplicationController
   def create
-    meetup = Meetup.find(params["meetup_id"])
+    meetup = Meetup.find(params["meetupId"])
     attendee_action = params["attendeeAction"]
 
     if attendee_action == "Join Game"

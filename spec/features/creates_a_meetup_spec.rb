@@ -46,7 +46,7 @@ So others can join.
     click_link "Schedule a Game"
     expect(page).to have_content("Schedule a game at #{court.name}")
 
-    select((Time.now.getlocal.to_date + 1).day, from: 'meetup_start_time_3i')
+    select((Date.today + 1).day, from: 'meetup_start_time_3i')
     select('06 PM', from: 'meetup_start_time_4i')
     select('15', from: "meetup_start_time_5i")
 

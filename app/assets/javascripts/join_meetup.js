@@ -12,7 +12,7 @@ $(".join-button").on('click', function(event) {
     url: "/meetups/" + meetupId + "/attendees",
     method: 'POST',
     dataType: 'json',
-    data: {meetup_id: meetupId, attendeeAction: attendeeAction}
+    data: {meetupId: meetupId, attendeeAction: attendeeAction}
   })
   .success(function(attendees){
     if (attendeeAction == "Join Game") {
@@ -27,7 +27,7 @@ $(".join-button").on('click', function(event) {
       $button.text("Join Game");
       meetupFlash(meetupId, attendees, "left");
     }
-  })
+  });
 });
 
 function meetupFlash(meetup, attendees, result) {
