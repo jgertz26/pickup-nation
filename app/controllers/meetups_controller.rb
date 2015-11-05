@@ -1,9 +1,14 @@
 class MeetupsController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
+  include Meetup::MeetupTimes
+
   def new
     @court = Court.find(params["court_id"])
     @meetup = Meetup.new
+    @days = meetup_days
+    @hours = MEETUP_HOURS
+    @minutes = MEETUP_MINUTES
   end
 
   def create
@@ -48,7 +53,9 @@ class MeetupsController < ApplicationController
   private
 
   def meetup_create_params
-    params.require(:meetup).permit(:description, :start_time).merge(
+    output = params.require(:meetup).permit(:description, :start_time)
+
+    output.merge(
       court: @court,
       user: current_user
     )
