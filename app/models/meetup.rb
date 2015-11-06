@@ -12,21 +12,21 @@ class Meetup < ActiveRecord::Base
 
   module MeetupTimes
     MEETUP_HOURS = [
-      ["06", "6 AM"],["07", "7 AM"],["08", "8 AM"],["09", "9 AM"],
-      ["10", "10 AM"],["11", "11 AM"],["12", "12 PM"],["13", "1 PM"],
-      ["14", "2 PM"],["15", "3 PM"],["16", "4 PM"],["17", "5 PM"],
-      ["18", "6 PM"],["19", "7 PM"],["20", "8 PM"],["21", "9 PM"],
-      ["22", "10 PM"]
+      [ "6 AM", "06"],[ "7 AM", "07"],[ "8 AM", "08"],[ "9 AM", "09"],
+      ["10 AM", "10"],["11 AM", "11"],["12 PM", "12"],[ "1 PM", "13"],
+      [ "2 PM", "14"],[ "3 PM", "15"],[ "4 PM", "16"],[ "5 PM", "17"],
+      [ "6 PM", "18"],[ "7 PM", "19"],[ "8 PM", "20"],[ "9 PM", "21"],
+      ["10 PM", "22"]
     ]
 
     MEETUP_MINUTES = ["00", "15", "30", "45"]
 
-    def meetup_days
+    def week_days
       days = []
       i = 0
 
       7.times do
-        days << Date.today.next_day(i)
+        days << [Date.today.next_day(i), (i)]
         i += 1
       end
       days
