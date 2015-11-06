@@ -18,7 +18,6 @@ So that I can find one near me that suits my needs.
 
     visit courts_path
 
-    binding.pry
     expect(page).to have_content(court_1.name)
     expect(page).to have_content(court_1.full_address)
     expect(page).to have_content(court_2.name)
