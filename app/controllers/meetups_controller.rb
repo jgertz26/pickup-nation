@@ -6,7 +6,7 @@ class MeetupsController < ApplicationController
   def new
     @court = Court.find(params["court_id"])
     @meetup = Meetup.new
-    @days = week_days.map { |m| [m[0].strftime('%a, %b. %d'), m[1]] }
+    @days = week_days.map { |m| [m[0].strftime('%a, %b. %e'), m[1]] }
     @hours = MEETUP_HOURS
     @minutes = MEETUP_MINUTES
   end
