@@ -23,10 +23,10 @@ So others can join.
     click_link "Schedule a Game"
     expect(page).to have_content("Schedule a game at #{court.name}")
 
-    select('06 PM', from: 'meetup_start_time_4i')
-    select('15', from: "meetup_start_time_5i")
+    select('6 PM', from: 'start_hour')
+    select('15', from: "start_minute")
 
-    fill_in "Description", with: "We gonna ball"
+    fill_in "description", with: "We gonna ball"
     click_button "Schedule Game"
 
     expect(page).to have_content("Games today:")
@@ -46,9 +46,9 @@ So others can join.
     click_link "Schedule a Game"
     expect(page).to have_content("Schedule a game at #{court.name}")
 
-    select((Date.today + 1).day, from: 'meetup_start_time_3i')
-    select('06 PM', from: 'meetup_start_time_4i')
-    select('15', from: "meetup_start_time_5i")
+    select((Date.today + 1).day, from: 'start_day')
+    select('6 PM', from: 'start_hour')
+    select('15', from: "start_minute")
 
     click_button "Schedule Game"
 
