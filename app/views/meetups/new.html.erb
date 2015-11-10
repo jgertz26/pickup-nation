@@ -3,17 +3,27 @@
   <h2>Schedule a game at <%= @court.name %></h2>
   <%= form_for [@court, @meetup] do |f| %>
 
-    <%= f.label :start_time %>
-    <%= select_tag(:start_day, options_for_select(@days)) %>
+    <div class="meetup-day-form">
+      <%= f.label :start_time %>
+      <%= select_tag(:start_day, options_for_select(@days)) %>
+    </div>
 
-    <%= select_tag(:start_hour, options_for_select(@hours)) %>
+    <div class="meetup-hour-form">
+      <%= select_tag(:start_hour, options_for_select(@hours)) %>
+    </div>
+    :
+    <div class="meetup-minute-form">
+      <%= select_tag(:start_minute, options_for_select(@minutes)) %>
+    </div>
 
-    <%= select_tag(:start_minute, options_for_select(@minutes)) %>
+    <div class="meetup-description-form">
+      <%= f.label :description %>
+      <%= text_area_tag :description %>
+    </div>
 
-    <%= f.label :description %>
-    <%= text_area_tag :description %>
-
-    <%= f.submit ("Schedule Game"), class: "button radius"%>
+    <div class="submit-meetup-button">
+      <%= f.submit ("Schedule Game"), class: "button radius"%>
+    </div>
   <% end %>
 
 </div>
