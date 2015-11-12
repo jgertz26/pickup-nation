@@ -38,7 +38,7 @@ To let users know the conditions of the court.
     sign_in(user_1)
     visit court_path(court)
 
-    expect(page).to have_content("Provide Update")
+    expect(page).to have_content("Provide update")
     click_link "Provide update"
 
     fill_in "Updates", with: "People showed up!"
