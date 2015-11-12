@@ -17,7 +17,11 @@ So that others can know I'm coming.
   let(:user_2) { FactoryGirl.create(:user) }
 
   scenario "user successfully joins a meetup", js: true do
-    FactoryGirl.create(:meetup, court: court, user: user_1)
+    FactoryGirl.create(:meetup,
+      court: court,
+      user: user_1,
+      start_time: Time.now + 6.hours
+    )
 
     sign_in(user_2)
     visit court_path(court)
@@ -33,7 +37,11 @@ So that others can know I'm coming.
   end
 
   scenario "user successfully leaves meetup", js: true do
-    meetup = FactoryGirl.create(:meetup, court: court, user: user_1)
+    meetup = FactoryGirl.create(:meetup,
+      court: court,
+      user: user_1,
+      start_time: Time.now + 6.hours
+    )
     Attendee.create(meetup: meetup, user: user_2)
 
     sign_in(user_2)
