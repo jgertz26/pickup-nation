@@ -22,11 +22,11 @@ class Meetup < ActiveRecord::Base
     MEETUP_MINUTES = ["00", "15", "30", "45"]
 
     def week_days
-      days = []
-      i = 0
+      days = [["Today", 0]]
+      i = 1
 
-      7.times do
-        days << [Date.today.next_day(i), (i)]
+      6.times do
+        days << [Date.today.next_day(i).strftime('%a, %b. %e'), (i)]
         i += 1
       end
       days

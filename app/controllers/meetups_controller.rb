@@ -6,7 +6,7 @@ class MeetupsController < ApplicationController
   def new
     @court = Court.find(params["court_id"])
     @meetup = Meetup.new
-    @days = week_days.map { |m| [m[0].strftime('%a, %b. %e'), m[1]] }
+    @days = week_days
     @hours = MEETUP_HOURS
     @minutes = MEETUP_MINUTES
   end
@@ -56,8 +56,8 @@ class MeetupsController < ApplicationController
     meetup_info = params.permit(
       :description, :start_day, :start_hour, :start_minute
     )
-
-    date = week_days[meetup_info[:start_day].to_i][0]
+    
+    date = Date.today.next_day(meetup_info[:start_day].to_i)
     hour = meetup_info[:start_hour].to_i
     minute = meetup_info[:start_minute].to_i
     description = meetup_info[:description]
