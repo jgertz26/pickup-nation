@@ -16,7 +16,11 @@ Because I changed my mind.
   let(:admin) { FactoryGirl.create(:user, admin: true) }
 
   background do
-    FactoryGirl.create(:meetup, court: court, user: user)
+    FactoryGirl.create(:meetup,
+      court: court,
+      user: user,
+      start_time: Time.now + 6.hours
+    )
   end
 
   scenario "user deletes meetup" do
