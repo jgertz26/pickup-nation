@@ -16,7 +16,12 @@ To let users know the conditions of the court.
   let(:user_2) { FactoryGirl.create(:user) }
 
   background do
-    FactoryGirl.create(:meetup, court: court, user: user_1)
+    FactoryGirl.create(
+      :meetup,
+      court: court,
+      user: user_1,
+      start_time: Time.now + 6.hours
+    )
   end
 
   scenario "user with no meetups views show page" do
@@ -33,6 +38,7 @@ To let users know the conditions of the court.
     sign_in(user_1)
     visit court_path(court)
 
+    expect(page).to have_link("Provide Update")
     click_link "Provide update"
 
     fill_in "Updates", with: "People showed up!"
