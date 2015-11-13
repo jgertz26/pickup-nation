@@ -20,9 +20,8 @@ $("#show-map-button").click(function( event ) {
 
   var fullAddress = streetAddress + " " + city + " " + state + " " + zip;
 
-  $("form").slideToggle( "slow" );
+  toggleMap();
   $("#map-error").hide();
-  $("#map-and-button").slideToggle( "slow" );
 
   var geocoder = new google.maps.Geocoder();
 
@@ -67,12 +66,17 @@ $("#show-map-button").click(function( event ) {
           });
 
         });
+
+        $("#wrong-address-button").click(function( event ) {
+          event.preventDefault();
+          toggleMap();
+        });
+        
       });
 
     } else {
 
-        $("#map-and-button").slideToggle( "slow" );
-        $("form").slideToggle( "slow" );
+        toggleMap();
 
         if (status == "ZERO_RESULTS") {
 
@@ -100,4 +104,9 @@ function placeMarker(location, map) {
     position: location,
     map: map
   });
+}
+
+function toggleMap() {
+  $("#map-and-button").slideToggle( "slow" );
+  $("form").slideToggle( "slow" );
 }
