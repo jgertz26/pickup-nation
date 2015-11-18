@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :meetups, only: :index do
     resources :attendees, only: :create
   end
+
+  resources :profiles, only: :show
 end

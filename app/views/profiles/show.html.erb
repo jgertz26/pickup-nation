@@ -1,0 +1,20 @@
+<div class="page-content small-11 small-centered columns">
+
+  <h2> <%= @user.username %> </h2>
+
+  <div class="row">
+    <div class="show-info-left small-12 small-centered medium-4 medium-uncentered columns">
+
+      <div class="profile-photo">
+        <%= image_tag "#{current_user.avatar}" %>
+      </div>
+
+      <div class="profile-info">
+        Meetups attended: <%= @user.attendees.length %>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
