@@ -1,17 +1,25 @@
 <div class="page-content small-11 small-centered columns">
 
-  <h2> <%= @user.username %> </h2>
+  <h2> User: <%= @user.username %> </h2>
 
   <div class="row">
     <div class="show-info-left small-12 small-centered medium-4 medium-uncentered columns">
 
-      <div class="profile-photo">
+      <div class="profile-left">
         <%= image_tag "#{current_user.avatar}" %>
-      </div>
 
-      <div class="profile-info">
-        Meetups attended: <%= @user.attendees.length %>
+        <div class="profile-info">          
+          <p>Meetups attended: <%= @user.attendees.length %></p>
 
+          <% if current_user == User.find(params[:id]) %>
+
+            <div id="edit-user-button">
+              <%= link_to "Edit User Info",
+                  edit_user_registration_path,
+                  class: "button alert radius tiny" %>
+            </div>
+          <% end %>
+        </div>
       </div>
 
     </div>

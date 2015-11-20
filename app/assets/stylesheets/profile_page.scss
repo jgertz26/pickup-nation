@@ -1,0 +1,15 @@
+$celtics: #195a07;
+
+.profile-left {
+  max-width: 260px;
+  background-color: darken($celtics, 3);
+}
+
+.profile-info {
+  padding: 15px;
+  width: 100%;
+}
+
+#edit-user-button {
+  text-align: center;
+}
