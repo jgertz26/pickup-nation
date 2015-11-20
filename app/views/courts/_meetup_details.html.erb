@@ -1,23 +1,40 @@
-<% unless meetup.description == "" || meetup.description.nil? %>
-  <br>Details: <%= meetup.description %>
-<% end %>
-  <div id=<%= "attendee-info-#{meetup.id}" %> >
-    Total attendees: <%= meetup.attendees.length %>
+<li>
+  <div class="row meetup-details">
+    <div class="small-2 medium-2 columns">
+      <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
+    </div>
+
+    <div class="small-10 medium-7 columns left">
+      <%= link_to meetup.user.username, profile_path(meetup.user) %> -
+      <%= meetup.start_time.strftime(time_string) %>
+      <% unless meetup.description == "" || meetup.description.nil? %>
+        <br>Details: <%= meetup.description %>
+      <% end %>
+        <div id=<%= "attendee-info-#{meetup.id}" %> >
+          Total attendees: <%= meetup.attendees.length %>
+        </div>
+
+      <% unless meetup.condition.nil? %>
+        Updates: <%= meetup.condition %>
+        <em> - <%= time_ago_in_words(meetup.updated_at) %> ago</em><br>
+      <% end %>
+
+      <% if current_user %>
+        <% if current_user.creator?(meetup) %>
+          <%= link_to "Provide update",
+              edit_court_meetup_path(@court, meetup) %>
+        <% end %>
+
+        <% if current_user.creator?(meetup) || current_user.admin %>
+          - <%= link_to "Delete game",
+              court_meetup_path(@court, meetup), method: :delete %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div id="join-buttons" class="small-12 small-centered medium-3 medium-uncentered columns">
+      <%= render "join_buttons", meetup: meetup %>
+    </div>
+
   </div>
-
-<% unless meetup.condition.nil? %>
-  Updates: <%= meetup.condition %>
-  <em> - <%= time_ago_in_words(meetup.updated_at) %> ago</em><br>
-<% end %>
-
-<% if current_user %>
-  <% if current_user.creator?(meetup) %>
-    <%= link_to "Provide update",
-        edit_court_meetup_path(@court, meetup) %>
-  <% end %>
-
-  <% if current_user.creator?(meetup) || current_user.admin %>
-    - <%= link_to "Delete game",
-        court_meetup_path(@court, meetup), method: :delete %>
-  <% end %>
-<% end %>
+</li>
