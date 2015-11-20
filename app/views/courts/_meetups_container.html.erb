@@ -19,8 +19,8 @@
           </div>
 
           <div class="small-10 medium-7 columns left">
-            <%= "#{meetup.user.username} -
-              #{meetup.start_time.strftime('%l:%M %P')}" %>
+            <%= link_to meetup.user.username, profile_path(meetup.user) %> -
+            <%= meetup.start_time.strftime('%l:%M %P') %>
             <%= render "meetup_details", meetup: meetup %>
           </div>
 
@@ -45,8 +45,8 @@
           </div>
 
           <div class="small-10 medium-7 columns left">
-            <%= "#{meetup.user.username} -
-              #{meetup.start_time.strftime('%a. %m/%d, %l:%M %P')}" %>
+            <%= link_to meetup.user.username, profile_path(meetup.user) %> -
+            <%= meetup.start_time.strftime('%a. %m/%d, %l:%M %P') %>
             <%= render "meetup_details", meetup: meetup %>
           </div>
 
