@@ -12,24 +12,7 @@
   <h5>Games today:</h5>
   <ul>
     <% @meetups_today.each do |meetup| %>
-      <li>
-        <div class="row meetup-details">
-          <div class="small-2 medium-2 columns">
-            <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
-          </div>
-
-          <div class="small-10 medium-7 columns left">
-            <%= link_to meetup.user.username, profile_path(meetup.user) %> -
-            <%= meetup.start_time.strftime('%l:%M %P') %>
-            <%= render "meetup_details", meetup: meetup %>
-          </div>
-
-          <div id="join-buttons" class="small-12 small-centered medium-3 medium-uncentered columns">
-            <%= render "join_buttons", meetup: meetup %>
-          </div>
-
-        </div>
-      </li>
+      <%= render "meetup_details", meetup: meetup, time_string: '%l:%M %P' %>
     <% end %>
   </ul>
 <% end %>
@@ -38,24 +21,7 @@
   <h5>Later this week:</h5>
   <ul>
     <% @meetups_this_week.each do |meetup| %>
-      <li>
-        <div class="row meetup-details">
-          <div class="small-2 medium-2 columns">
-            <%= image_tag "#{meetup.user.avatar}", class: "meetup-avatar" %>
-          </div>
-
-          <div class="small-10 medium-7 columns left">
-            <%= link_to meetup.user.username, profile_path(meetup.user) %> -
-            <%= meetup.start_time.strftime('%a. %m/%d, %l:%M %P') %>
-            <%= render "meetup_details", meetup: meetup %>
-          </div>
-
-          <div id="join-buttons" class="small-12 small-centered medium-3 medium-uncentered columns">
-            <%= render "join_buttons", meetup: meetup %>
-          </div>
-
-        </div>
-      </li>
+      <%= render "meetup_details", meetup: meetup, time_string: '%a. %m/%d, %l:%M %P' %>
     <% end %>
   </ul>
 <% end %>
