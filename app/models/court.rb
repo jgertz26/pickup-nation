@@ -33,7 +33,6 @@ class Court < ActiveRecord::Base
   end
 
   def setting
-    binding.pry
     court_type.description
   end
 
