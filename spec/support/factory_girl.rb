@@ -9,13 +9,17 @@ FactoryGirl.define do
     admin false
   end
 
+  factory :court_type do
+    description "Outdoor with lights"
+  end
+
   factory :court do
     sequence(:name) { |n| "Dinkle Park Courts#{n}" }
     sequence(:street_address) { |n| "#{n} Beacon St" }
     city 'Boston'
     state 'MA'
     zip '02467'
-    setting "Outdoor with lights"
+    court_type
     hoop_count 4
     latitude 40.11245
     longitude -0.012345

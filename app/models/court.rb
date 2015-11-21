@@ -32,6 +32,10 @@ class Court < ActiveRecord::Base
     "#{street_address} #{city}, #{state} #{zip}"
   end
 
+  def setting
+    court_type.description
+  end
+
   def meetups_today
     results = []
     meetups.each do |meetup|

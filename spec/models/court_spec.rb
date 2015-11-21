@@ -20,10 +20,6 @@ describe Court do
 
   it { should have_valid(:zip).when("02288") }
   it { should_not have_valid(:zip).when("jimbo") }
-
-  it { should have_valid(:setting).when("Indoor") }
-  it { should have_valid(:setting).when("Outdoor with lights") }
-  it { should_not have_valid(:setting).when("Scooby Doo") }
 end
 
 describe Court, "#full_address" do
