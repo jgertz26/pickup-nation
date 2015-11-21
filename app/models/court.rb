@@ -1,5 +1,6 @@
 class Court < ActiveRecord::Base
   has_many :meetups, dependent: :destroy
+  belongs_to :court_type
 
   geocoded_by :full_address
 
