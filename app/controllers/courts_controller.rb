@@ -38,6 +38,7 @@ class CourtsController < ApplicationController
 
   def new
     @court = Court.new
+    @court_type_map = CourtType.all.map { |m| [m.description, m.id.to_i] }
   end
 
   def create
@@ -89,7 +90,7 @@ class CourtsController < ApplicationController
   def court_params
     params.require(:court).permit(
       :name, :street_address, :city, :state, :zip,
-      :hoop_count, :setting, :hours, :latitude, :longitude
+      :hoop_count, :court_type_id, :hours, :latitude, :longitude
     )
   end
 

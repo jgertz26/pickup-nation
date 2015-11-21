@@ -15,7 +15,8 @@ $("#show-map-button").click(function( event ) {
     zip: zip,
     hoop_count: $("#court_hoop_count").val(),
     setting: $("#court_setting").val(),
-    hours: $("#court_hours").val()
+    hours: $("#court_hours").val(),
+    court_type_id: $("#court_court_type_id").val()
   };
 
   var fullAddress = streetAddress + " " + city + " " + state + " " + zip;
@@ -71,7 +72,7 @@ $("#show-map-button").click(function( event ) {
           event.preventDefault();
           toggleMap();
         });
-        
+
       });
 
     } else {

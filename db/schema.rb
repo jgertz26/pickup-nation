@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015183633) do
+ActiveRecord::Schema.define(version: 20151121003609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 20151015183633) do
 
   add_index "attendees", ["meetup_id", "user_id"], name: "index_attendees_on_meetup_id_and_user_id", unique: true, using: :btree
 
+  create_table "court_types", force: :cascade do |t|
+    t.string "description", null: false
+  end
+
   create_table "courts", force: :cascade do |t|
     t.string   "name",           null: false
     t.float    "latitude",       null: false
@@ -31,11 +35,11 @@ ActiveRecord::Schema.define(version: 20151015183633) do
     t.string   "city",           null: false
     t.string   "state",          null: false
     t.string   "zip",            null: false
-    t.string   "setting",        null: false
     t.string   "hours"
     t.integer  "hoop_count",     null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "court_type_id",  null: false
   end
 
   add_index "courts", ["street_address", "city", "state", "zip"], name: "index_courts_on_street_address_and_city_and_state_and_zip", unique: true, using: :btree

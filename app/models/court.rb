@@ -1,12 +1,13 @@
 class Court < ActiveRecord::Base
   has_many :meetups, dependent: :destroy
+  belongs_to :court_type
 
   geocoded_by :full_address
 
   paginates_per 8
 
   validates :name, :hoop_count, :street_address, :city, :state,
-            :zip, :setting, :latitude, :longitude,
+            :zip, :latitude, :longitude,
             presence: true
 
   validates :hoop_count, numericality: { only_integer: true, less_than: 30 }
@@ -21,10 +22,6 @@ class Court < ActiveRecord::Base
                                       'WV', 'WY'],
                                  message: "is invalid" }
 
-  validates :setting, inclusion: {
-    in: ['Outdoor without lights', 'Outdoor with lights', 'Indoor']
-  }
-
   validates_uniqueness_of :street_address,
     scope: [:city, :state, :zip],
     message: "is already in the system"
@@ -33,6 +30,10 @@ class Court < ActiveRecord::Base
 
   def full_address
     "#{street_address} #{city}, #{state} #{zip}"
+  end
+
+  def setting
+    court_type.description
   end
 
   def meetups_today

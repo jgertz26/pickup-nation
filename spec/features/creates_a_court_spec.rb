@@ -30,7 +30,7 @@ So I can schedule games there
     fill_in "State", with: court.state
     fill_in "Zip Code", with: court.zip
     fill_in "Number of hoops", with: court.hoop_count
-    select('Indoor', from: 'Setting')
+    page.select("Outdoor with lights", from: "Setting")
     fill_in "Hours", with: court.hours
     click_button "Add Court"
 
