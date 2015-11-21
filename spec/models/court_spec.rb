@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Court do
   it { should have_many(:meetups) }
+  it { should belong_to(:court_type) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:street_address) }
@@ -32,6 +33,14 @@ describe Court, "#full_address" do
       zip: "02111"
     )
     expect(court.full_address).to eq("33 Harrison Ave Boston, MA 02111")
+  end
+end
+
+describe Court, "#setting" do
+  it "returns a string describing the court_type" do
+    court_type = FactoryGirl.create(:court_type, description: "Indoor")
+    court = FactoryGirl.create(:court, court_type: court_type)
+    expect(court.setting).to eq("Indoor")
   end
 end
 
