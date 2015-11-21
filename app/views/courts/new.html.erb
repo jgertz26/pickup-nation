@@ -36,9 +36,8 @@
       <br>
 
       <div class="court-setting-field">
-        <%= f.label :setting %>
-        <%= f.select(:setting,
-            ['Outdoor without lights', 'Outdoor with lights', 'Indoor']) %>
+        <%= f.label :court_type_id, "Setting" %>
+        <%= f.select(:court_type_id, options_for_select(@court_type_map)) %>
       </div>
 
       <div class="court-hoop-count-field">
