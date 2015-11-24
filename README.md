@@ -11,3 +11,12 @@ https://pickupnation.herokuapp.com/
 
 ##### Trello Board
 https://trello.com/b/BQUT0aQN/pickup-nation
+
+### Local Set Up Instructions
+
+1. Clone git repository
+2. In the project's root folder, run `gem install bundler`
+3. `bundle install`
+4. `rake db:create && db:migrate && db:seed`
+5. `rails s`
+6. You can now access the app at [localhost:3000](http://localhost:3000/)
