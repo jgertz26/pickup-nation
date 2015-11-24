@@ -50,19 +50,19 @@ describe Court, "#meetups_today" do
     meetup_1 = FactoryGirl.create(
       :meetup,
       court: court,
-      start_time: (Time.now - 5.hours)
+      start_time: (Date.today + 8.hours)
     )
     meetup_2 = FactoryGirl.create(
       :meetup,
       court: court,
-      start_time: (Time.now - 7.hours)
+      start_time: (Date.today + 10.hours)
     )
     FactoryGirl.create(
       :meetup,
       court: court,
-      start_time: (Time.now - 4.hours + 9.days)
+      start_time: (Date.today + 9.days)
     )
-    expect(court.meetups_today).to eq([meetup_2, meetup_1])
+    expect(court.meetups_today).to eq([meetup_1, meetup_2])
   end
 end
 
