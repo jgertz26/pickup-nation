@@ -49,12 +49,13 @@ describe Court, "#meetups_today" do
     court = FactoryGirl.create(:court)
     meetup_1 = FactoryGirl.create(
       :meetup,
-      court: court
+      court: court,
+      start_time: (Time.now - 5.hours)
     )
     meetup_2 = FactoryGirl.create(
       :meetup,
       court: court,
-      start_time: (Time.now - 6.hours)
+      start_time: (Time.now - 7.hours)
     )
     FactoryGirl.create(
       :meetup,
